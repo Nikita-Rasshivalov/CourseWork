@@ -1,0 +1,169 @@
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe.config
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.pdb
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.g.cs
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\App.g.cs
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.cache
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.lref
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.baml
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.g.resources
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.Properties.Resources.resources
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.GenerateResource.cache
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CoreCompileInputs.cache
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.exe
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.pdb
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.dll
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.dll
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.pdb
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.xml
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.xml
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CopyComplete
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\linq2db.dll
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\linq2db.pdb
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\linq2db.xml
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_Content.g.cs
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.g.cs
+D:\StudestsWork\Максим Болтуть\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.baml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe.config
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.pdb
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\linq2db.dll
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.dll
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.dll
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\linq2db.pdb
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\linq2db.xml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.pdb
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.xml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.xml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.g.cs
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.g.cs
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\App.g.cs
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_Content.g.cs
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.cache
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.lref
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.baml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.baml
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.g.resources
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.Properties.Resources.resources
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.GenerateResource.cache
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CopyComplete
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.exe
+E:\4 семестр\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.pdb
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.g.cs
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.g.cs
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\App.g.cs
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.cache
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.lref
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.exe
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.pdb
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe.config
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.pdb
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.dll
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.dll
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.pdb
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.xml
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.xml
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.baml
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.baml
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.g.resources
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.Properties.Resources.resources
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.GenerateResource.cache
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CoreCompileInputs.cache
+c:\Study\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CopyComplete
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe.config
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.pdb
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.dll
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.dll
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.pdb
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.xml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.xml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\App.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.cache
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.lref
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.baml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.baml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.g.resources
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.Properties.Resources.resources
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.GenerateResource.cache
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CoreCompileInputs.cache
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CopyComplete
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.exe
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.pdb
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe.config
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.pdb
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.dll
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.dll
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.pdb
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.xml
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.xml
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.g.cs
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.g.cs
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\App.g.cs
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.cache
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.lref
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.baml
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.baml
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.g.resources
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.Properties.Resources.resources
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.GenerateResource.cache
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CoreCompileInputs.cache
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CopyComplete
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.exe
+C:\Users\nikit\Desktop\курсач\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.pdb
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe.config
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.exe
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\CourseApp.pdb
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.dll
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.dll
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.pdb
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.xml
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.xml
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.g.cs
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.g.cs
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\App.g.cs
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.cache
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp_MarkupCompile.lref
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.baml
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.baml
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.g.resources
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.Properties.Resources.resources
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.GenerateResource.cache
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CoreCompileInputs.cache
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csproj.CopyComplete
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.exe
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.pdb
