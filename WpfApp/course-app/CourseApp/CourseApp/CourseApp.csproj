@@ -41,6 +41,7 @@
       <HintPath>..\packages\Npgsql.4.0.0\lib\net451\Npgsql.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
@@ -69,26 +70,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddProdWindow.xaml.cs">
+      <DependentUpon>AddProdWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EAddProdWindow.xaml.cs">
+      <DependentUpon>EAddProdWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EInvoiceDetalisationWindow.xaml.cs">
+      <DependentUpon>EInvoiceDetalisationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="InvoiceDetalisationWindow.xaml.cs">
+      <DependentUpon>InvoiceDetalisationWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\Customer.cs" />
-    <Compile Include="Models\Decorator\Product.cs" />
-    <Compile Include="Models\Decorator\ProductInStockDecorator.cs" />
-    <Compile Include="Models\Decorator\ProductInStockWithAverageMarkup.cs" />
-    <Compile Include="Models\Decorator\ProductInStockWithBigMarkup.cs" />
-    <Compile Include="Models\Decorator\ProductInStockWithCustomMarkup.cs" />
-    <Compile Include="Models\Decorator\ProductInStockWithSmallMarkup.cs" />
+    <Compile Include="Models\ExpenditurePosition.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ExpenditureInvoice.cs" />
-    <Compile Include="Models\Decorator\AbstractProduct.cs" />
+    <Compile Include="Models\AbstractProduct.cs" />
+    <Compile Include="Models\ProductInStock.cs" />
     <Compile Include="Models\ReceiptInvoice.cs" />
+    <Compile Include="Models\ReceiptPosition.cs" />
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Reports.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ExpenditureInvoiceService.cs" />
+    <Compile Include="Services\ExpenditurePositionService.cs" />
     <Compile Include="Services\IService.cs" />
+    <Compile Include="Services\ProductInStockeService.cs" />
     <Compile Include="Services\ProductService.cs" />
     <Compile Include="Services\ReceiptInvoiceService.cs" />
-    <Compile Include="Services\ReceiptInvoiceService1.cs" />
+    <Compile Include="Services\ReceiptPositionService.cs" />
     <Compile Include="Services\RoleService.cs" />
     <Compile Include="Services\StockService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -96,6 +109,22 @@
     <Compile Include="WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddProdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EAddProdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EInvoiceDetalisationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InvoiceDetalisationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -143,5 +172,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

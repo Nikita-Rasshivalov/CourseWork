@@ -2,17 +2,35 @@
 
 namespace CourseApp.Models
 {
-    public class ReceiptInvoice
-    {
+	/// <summary>
+	/// Приходная накладная
+	/// </summary>
+	public class ReceiptInvoice
+	{
+		/// <summary>
+		/// ID накладной
+		/// </summary>
 		public int ReceiptInvoiceId { get; set; }
+		/// <summary>
+		/// Дата накладной
+		/// </summary>
 		public NpgsqlDate? ReceiptInvoiceDate { get; set; }
+		/// <summary>
+		/// Id поставщика
+		/// </summary>
 		public int? CustomerId { get; set; }
+		/// <summary>
+		/// ID склада
+		/// </summary>
+		public int StockId { get; set; }
+		/// <summary>
+		/// Поставщик
+		/// </summary>
 		public Customer Customer { get; set; }
-		public int? StockId { get; set; }
+
+		/// <summary>
+		/// Склад
+		/// </summary>
 		public Stock Stock { get; set; }
-		public int? ProductId { get; set; }
-		public Product Product { get; set; }
-		public float? CountProduct { get; set; }
-		public float? PriceProduct { get; set; }
 	}
 }

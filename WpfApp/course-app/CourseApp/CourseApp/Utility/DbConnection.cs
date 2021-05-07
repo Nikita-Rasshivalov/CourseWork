@@ -1,4 +1,5 @@
 ﻿using Npgsql;
+using System.Configuration;
 using System.Data;
 
 namespace CourseApp.Utility
@@ -8,8 +9,7 @@ namespace CourseApp.Utility
     /// </summary>
     public class DbConnection
     {
-        private NpgsqlConnection connection = new NpgsqlConnection("Server=localhost; Port=5432; Database=Stonks; User Id=postgres; Password = 1;");
-
+        private readonly NpgsqlConnection connection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MyDatabase"].ConnectionString);
         /// <summary>
         /// Полученик соединения.
         /// </summary>

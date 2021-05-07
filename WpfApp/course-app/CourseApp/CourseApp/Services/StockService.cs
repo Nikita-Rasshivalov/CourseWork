@@ -55,7 +55,7 @@ namespace CourseApp.Services
                     {
                         StockId = reader.GetInt32(0),
                         StockName = reader.GetString(1),
-                        Markup = reader.GetFloat(3)
+                        Markup = reader.GetDouble(3)
                     };
 
                     entities.Add(entity);
@@ -95,8 +95,7 @@ namespace CourseApp.Services
                         StockId = reader.GetInt32(0),
                         StockName = reader.GetString(1),
                         Description = reader.GetString(2),
-                        Markup = reader.GetFloat(3),
-                        UserId = reader.GetInt32(4)
+                        Markup = reader.GetDouble(3)
                     };
                 }
 

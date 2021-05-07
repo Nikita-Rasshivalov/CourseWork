@@ -56,10 +56,7 @@ namespace CourseApp.Services
                         ReceiptInvoiceId = reader.GetInt32(0),
                         ReceiptInvoiceDate = reader.GetDate(1),
                         CustomerId = reader.GetInt32(2),
-                        StockId = reader.GetInt32(3),
-                        ProductId = reader.GetInt32(4),
-                        CountProduct = reader.GetFloat(5),
-                        PriceProduct = reader.GetFloat(6)
+                        StockId = reader.GetInt32(3)
                     };
 
                     entities.Add(entity);
@@ -99,10 +96,7 @@ namespace CourseApp.Services
                         ReceiptInvoiceId = reader.GetInt32(0),
                         ReceiptInvoiceDate = reader.GetDate(1),
                         CustomerId = reader.GetInt32(2),
-                        StockId = reader.GetInt32(3),
-                        ProductId = reader.GetInt32(4),
-                        CountProduct = reader.GetFloat(5),
-                        PriceProduct = reader.GetFloat(6)
+                        StockId = reader.GetInt32(4)
                     };
                 }
 
@@ -126,16 +120,14 @@ namespace CourseApp.Services
             try
             {
                 NpgsqlCommand command = new NpgsqlCommand("INSERT INTO receipt_invoices " +
-                                                          "(receipt_invoice_date, customer_id, stock_id, product_id, count_product, price_product) " +
-                                                          "VALUES (@receipt_invoice_date, @customer_id, @stock_id, @product_id, @count_product, @price_product);"
+                                                          "(receipt_invoice_date, customer_id, stock_id) " +
+                                                          "VALUES (@receipt_invoice_date, @customer_id, @stock_id);"
                                                           , connection.GetConnection());
 
                 command.Parameters.AddWithValue("@receipt_invoice_date", entity.ReceiptInvoiceDate);
                 command.Parameters.AddWithValue("@customer_id", entity.CustomerId);
                 command.Parameters.AddWithValue("@stock_id", entity.StockId);
-                command.Parameters.AddWithValue("@product_id", entity.ProductId);
-                command.Parameters.AddWithValue("@count_product", entity.CountProduct);
-                command.Parameters.AddWithValue("@price_product", entity.PriceProduct);
+
 
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
@@ -161,19 +153,12 @@ namespace CourseApp.Services
                                                           "SET receipt_invoice_date=@receipt_invoice_date, " +
                                                           "customer_id=@customer_id, " +
                                                           "stock_id=@stock_id, " +
-                                                          "product_id=@product_id, " +
-                                                          "count_product=@count_product, " +
-                                                          "price_product=@price_product " +
                                                           "WHERE receipt_invoice_id=@id;", connection.GetConnection());
 
                 command.Parameters.AddWithValue("@id", entity.ReceiptInvoiceId);
                 command.Parameters.AddWithValue("@receipt_invoice_date", entity.ReceiptInvoiceDate);
                 command.Parameters.AddWithValue("@customer_id", entity.CustomerId);
                 command.Parameters.AddWithValue("@stock_id", entity.StockId);
-                command.Parameters.AddWithValue("@product_id", entity.ProductId);
-                command.Parameters.AddWithValue("@count_product", entity.CountProduct);
-                command.Parameters.AddWithValue("@price_product", entity.PriceProduct);
-
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
             }

@@ -56,10 +56,7 @@ namespace CourseApp.Services
                         ExpenditureInvoiceId = reader.GetInt32(0),
                         ExpenditureInvoiceDate = reader.GetDate(1),
                         CustomerId = reader.GetInt32(2),
-                        StockName = reader.GetString(6),
-                        ProductId = reader.GetInt32(3),
-                        CountProduct = reader.GetFloat(4),
-                        PriceProduct = reader.GetFloat(5)
+                        StockId= reader.GetInt32(3)
                     };
 
                     entities.Add(entity);
@@ -99,10 +96,7 @@ namespace CourseApp.Services
                         ExpenditureInvoiceId = reader.GetInt32(0),
                         ExpenditureInvoiceDate = reader.GetDate(1),
                         CustomerId = reader.GetInt32(2),
-                        StockName = reader.GetString(3),
-                        ProductId = reader.GetInt32(4),
-                        CountProduct = reader.GetFloat(5),
-                        PriceProduct = reader.GetFloat(6)
+                        StockId = reader.GetInt32(3)
                     };
                 }
 
@@ -126,22 +120,18 @@ namespace CourseApp.Services
             try
             {
                 NpgsqlCommand command = new NpgsqlCommand("INSERT INTO expenditure_invoices " +
-                                                          "(expenditure_invoice_date, customer_id, stock_name, product_id, count_product, price_product) " +
-                                                          "VALUES (@expenditure_invoice_date, @customer_id, @stock_name, @product_id, @count_product, @price_product);"
+                                                          "(expenditure_invoice_date, customer_id, stock_id) VALUES (@expenditure_invoice_date, @customer_id, @stock_id);"
                                                           , connection.GetConnection());
 
                 command.Parameters.AddWithValue("@expenditure_invoice_date", entity.ExpenditureInvoiceDate);
                 command.Parameters.AddWithValue("@customer_id", entity.CustomerId);
-                command.Parameters.AddWithValue("@stock_name", entity.StockName);
-                command.Parameters.AddWithValue("@product_id", entity.ProductId);
-                command.Parameters.AddWithValue("@count_product", entity.CountProduct);
-                command.Parameters.AddWithValue("@price_product", entity.PriceProduct);
-
+                command.Parameters.AddWithValue("@stock_id", entity.StockId);
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
             }
             catch (NpgsqlException ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 return false;
             }
 
@@ -160,20 +150,13 @@ namespace CourseApp.Services
                 NpgsqlCommand command = new NpgsqlCommand("UPDATE expenditure_invoices " +
                                                           "SET expenditure_invoice_date=@expenditure_invoice_date, " +
                                                           "customer_id=@customer_id, " +
-                                                          "stock_name=@stock_name, " +
-                                                          "product_id=@product_id, " +
-                                                          "count_product=@count_product, " +
-                                                          "price_product=@price_product " +
+                                                          "stock_id=@stock_id " +
                                                           "WHERE expenditure_invoice_id=@id;", connection.GetConnection());
 
                 command.Parameters.AddWithValue("@id", entity.ExpenditureInvoiceId);
                 command.Parameters.AddWithValue("@expenditure_invoice_date", entity.ExpenditureInvoiceDate);
                 command.Parameters.AddWithValue("@customer_id", entity.CustomerId);
-                command.Parameters.AddWithValue("@stock_name", entity.StockName);
-                command.Parameters.AddWithValue("@product_id", entity.ProductId);
-                command.Parameters.AddWithValue("@count_product", entity.CountProduct);
-                command.Parameters.AddWithValue("@price_product", entity.PriceProduct);
-
+                command.Parameters.AddWithValue("@stock_id", entity.StockId);
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
             }

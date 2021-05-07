@@ -34,8 +34,8 @@ namespace CourseApp
                 // Если пользователь найден, то открываем рабочее окно.
                 WorkWindow workWindow = new WorkWindow(user.RoleKey, user.UserId);
                 workWindow.Show();
-                //this.Close();
-                this.Hide();
+                this.Close();
+                //this.Hide();
                 
             }
         }
@@ -45,7 +45,6 @@ namespace CourseApp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
 

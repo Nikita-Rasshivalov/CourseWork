@@ -2,6 +2,8 @@
 using CourseApp.Utility;
 using CourseApp.Models;
 using Npgsql;
+using System.Windows;
+using System.Diagnostics;
 
 namespace CourseApp.Services
 {
@@ -11,12 +13,16 @@ namespace CourseApp.Services
     public class ProductService : IService<Product>
     {
         DbConnection connection = new DbConnection();
-
+        /// <summary>
+        /// Удаление продукта
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public bool Delete(Product entity)
         {
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM products WHERE product_id=@id;", connection.GetConnection());
+                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM products  WHERE product_id=@id;", connection.GetConnection());
 
                 command.Parameters.AddWithValue("@id", entity.EntityId);
 
@@ -25,12 +31,16 @@ namespace CourseApp.Services
             }
             catch (NpgsqlException ex)
             {
+                Debug.WriteLine(ex.Message);
                 return false;
             }
 
             return true;
         }
-
+        /// <summary>
+        /// Получение всез продуктов
+        /// </summary>
+        /// <returns></returns>
         public List<Product> GetAll()
         {
             try
@@ -46,7 +56,7 @@ namespace CourseApp.Services
                     {
                         EntityId = reader.GetInt32(0),
                         ProductName = reader.GetString(1),
-                        ProductPrice = reader.GetFloat(2)
+                        ProductPrice = reader.GetDouble(2)
                     };
 
                     entities.Add(entity);
@@ -57,12 +67,16 @@ namespace CourseApp.Services
             }
             catch (NpgsqlException ex)
             {
-
+                
             }
 
             return null;
         }
-
+        /// <summary>
+        /// Получение продукта по id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Product GetById(int id)
         {
             Product entity = null;
@@ -80,7 +94,7 @@ namespace CourseApp.Services
                     {
                         EntityId = reader.GetInt32(0),
                         ProductName = reader.GetString(1),
-                        ProductPrice = reader.GetFloat(2)
+                        ProductPrice = reader.GetDouble(2)
                     };
                 }
 
@@ -93,7 +107,11 @@ namespace CourseApp.Services
 
             return entity;
         }
-
+        /// <summary>
+        /// вставка продукта
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public bool Insert(Product entity)
         {
             try
@@ -109,11 +127,16 @@ namespace CourseApp.Services
             catch (NpgsqlException ex)
             {
                 return false;
+                Debug.WriteLine(ex.Message);
             }
 
             return true;
         }
-
+        /// <summary>
+        /// обновление продукта
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
         public bool Update(Product entity)
         {
             try

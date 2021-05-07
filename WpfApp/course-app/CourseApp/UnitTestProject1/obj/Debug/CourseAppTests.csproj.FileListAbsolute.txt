@@ -54,3 +54,7 @@ C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\Co
 C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\CourseAppTests.csproj.CopyComplete
 C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\UnitTestProject1.dll
 C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\UnitTestProject1.pdb
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\CourseAppTests.csprojAssemblyReference.cache
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\CourseAppTests.csproj.CoreCompileInputs.cache
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

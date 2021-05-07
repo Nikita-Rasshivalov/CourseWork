@@ -4,14 +4,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseApp"
-        xmlns:DataModel="clr-namespace:CourseApp.Models" x:Class="CourseApp.WorkWindow"
+        xmlns:DataModel="clr-namespace:CourseApp.Models" x:Name="StorageAccWindow" x:Class="CourseApp.WorkWindow"
         mc:Ignorable="d"
-        Title="Storage Accounting" Height="450" Width="800" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Складской учет" Height="450" Width="896" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="417" Margin="2,-1,0,0" VerticalAlignment="Top" Width="787">
+        <TabControl x:Name="tabControl" HorizontalAlignment="Left" Height="417" Margin="2,-1,0,0" VerticalAlignment="Top" Width="878">
             <TabItem x:Name="idCustomer" Header="Огранизации" MouseEnter="IdCustomer_MouseEnter">
-                <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGridCustomer" HorizontalAlignment="Left" Height="289" Margin="6,4,0,0" VerticalAlignment="Top" Width="770" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" SelectionChanged="DataGridCustomer_SelectionChanged">
+                <Grid Background="#FFE5E5E5" Margin="0,0,-1.2,-0.2">
+                    <DataGrid x:Name="dataGridCustomer" HorizontalAlignment="Left" Height="289" Margin="6,4,0,0" VerticalAlignment="Top" Width="868" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" SelectionChanged="DataGridCustomer_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=CustomerId}" IsReadOnly = "True" Width="50" />
                             <DataGridTextColumn Header="Наименование организации" Binding="{Binding Path=CustomerName}" IsReadOnly = "True" Width="200" />
@@ -20,9 +20,9 @@
                     </DataGrid>
                     <TextBox x:Name="textBoxCustomerName" HorizontalAlignment="Left" Height="33" Margin="6,328,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="280"/>
                     <TextBox x:Name="textBoxCustomerDescription" HorizontalAlignment="Left" Height="33" Margin="301,328,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="305"/>
-                    <Button x:Name="buttonCustomer" Content="Сохранить" HorizontalAlignment="Left" Margin="698,338,0,0" VerticalAlignment="Top" Width="77" Height="22" Click="ButtonCustomer_Click"/>
-                    <Button x:Name="buttonCustomerClear" Content="Очистить" HorizontalAlignment="Left" Margin="616,338,0,0" VerticalAlignment="Top" Width="78" Height="22" Click="ButtonCustomerClear_Click"/>
-                    <Button x:Name="DelOrganisationBtn" Content="Удалить" HorizontalAlignment="Left" Margin="698,313,0,0" VerticalAlignment="Top" Width="78" Click="DellOrganisationBtn_Click"/>
+                    <Button x:Name="buttonCustomer" Content="Сохранить" HorizontalAlignment="Left" Margin="746,344,0,0" VerticalAlignment="Top" Width="110" Height="22" Click="ButtonCustomer_Click"/>
+                    <Button x:Name="buttonCustomerClear" Content="Очистить" HorizontalAlignment="Left" Margin="627,344,0,0" VerticalAlignment="Top" Width="101" Height="22" Click="ButtonCustomerClear_Click"/>
+                    <Button x:Name="DelOrganisationBtn" Content="Удалить" HorizontalAlignment="Left" Margin="746,308,0,0" VerticalAlignment="Top" Width="110" Click="DellOrganisationBtn_Click" Height="24"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="idUser" Header="Пользователи" MouseEnter="IdUser_MouseEnter">
@@ -37,7 +37,7 @@
                         <RowDefinition Height="301*"/>
                         <RowDefinition Height="88*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid x:Name="dataGridUser"  HorizontalAlignment="Left" Height="289" Margin="6,4,0,0" VerticalAlignment="Top" Width="770" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" SelectionChanged="DataGridUser_SelectionChanged" Grid.ColumnSpan="4">
+                    <DataGrid x:Name="dataGridUser"  HorizontalAlignment="Left" Height="289" Margin="6,4,0,0" VerticalAlignment="Top" Width="857" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" SelectionChanged="DataGridUser_SelectionChanged" Grid.ColumnSpan="4">
                         <DataGrid.Columns >
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=UserId}" IsReadOnly = "True" Width="50" />
                             <DataGridTextColumn Header="Логин" Binding="{Binding Path=UserName}" IsReadOnly = "True" Width="250" />
@@ -47,15 +47,15 @@
                     </DataGrid>
                     <Label x:Name="labelUserName" Content="Логин" Margin="6,21.2,11,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
                     <TextBox x:Name="textBoxUserName" HorizontalAlignment="Left" Height="30" Margin="6,47.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Row="1" Grid.ColumnSpan="3"/>
-                    <Label x:Name="labelUserRole" Content="Роль" Margin="101,0.2,470.6,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Width="150" Grid.Column="2" Grid.ColumnSpan="2"/>
-                    <ListBox x:Name="listBoxUserRole" HorizontalAlignment="Left" Height="50" Margin="101,28.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="145" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <Label x:Name="labelUserRole" Content="Роль" Margin="102,21.2,469.6,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Width="150" Grid.Column="2" Grid.ColumnSpan="2"/>
                     <Label x:Name="labelUserPass" Content="Пароль" Margin="115.8,21.2,320.6,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Width="150" Grid.Column="3"/>
                     <PasswordBox x:Name="passwordBoxUser" HorizontalAlignment="Left" Margin="116.8,47.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="154" Height="30" Grid.Column="3"/>
                     <Label x:Name="labelUserFullName" Content="ФИО" Margin="277.8,21.2,162.6,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Grid.Column="3"/>
                     <TextBox x:Name="textBoxUserFullName" HorizontalAlignment="Left" Height="30" Margin="277.8,47.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Row="1" Grid.Column="3"/>
-                    <Button x:Name="buttonUser" Content="Сохранить" HorizontalAlignment="Left" Margin="513.8,58.2,0,0" VerticalAlignment="Top" Width="67" Height="19" Grid.Row="1" Click="ButtonUser_Click" Grid.Column="3" />
-                    <Button x:Name="buttonUserClear" Content="Очистить" HorizontalAlignment="Left" Margin="432.8,58.2,0,0" VerticalAlignment="Top" Width="65" Height="19" Click="ButtonUserClear_Click" Grid.Column="3" Grid.Row="1"/>
-                    <Button x:Name="DelUserBtn" Content="Удалить" Grid.Column="3" HorizontalAlignment="Left" Margin="513.8,28.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="67" Click="DelUserBtn_Click"/>
+                    <Button x:Name="buttonUser" Content="Сохранить" HorizontalAlignment="Left" Margin="551.4,47.2,0,0" VerticalAlignment="Top" Width="94" Height="31" Grid.Row="1" Click="ButtonUser_Click" Grid.Column="3" />
+                    <Button x:Name="buttonUserClear" Content="Очистить" HorizontalAlignment="Left" Margin="451.4,47.2,0,0" VerticalAlignment="Top" Width="81" Height="31" Click="ButtonUserClear_Click" Grid.Column="3" Grid.Row="1"/>
+                    <Button x:Name="DelUserBtn" Content="Удалить" Grid.Column="3" HorizontalAlignment="Left" Margin="551.4,10.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Click="DelUserBtn_Click" Height="30"/>
+                    <ComboBox x:Name="comboBoxUserRole" Grid.Column="2" HorizontalAlignment="Left" Margin="101,47.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2" Height="30"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="idProduct" Header="Продукция" MouseEnter="IdProduct_MouseEnter">
@@ -72,7 +72,7 @@
                         <RowDefinition Height="301*"/>
                         <RowDefinition Height="88*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid x:Name="dataGridProduct" HorizontalAlignment="Left" Height="289" Margin="6,4,0,0" VerticalAlignment="Top" Width="770" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" Grid.ColumnSpan="6" SelectionChanged="DataGridProduct_SelectionChanged">
+                    <DataGrid x:Name="dataGridProduct" HorizontalAlignment="Left" Height="289" Margin="6,4,0,0" VerticalAlignment="Top" Width="857" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" Grid.ColumnSpan="6" SelectionChanged="DataGridProduct_SelectionChanged">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=EntityId}" IsReadOnly = "True" Width="50" />
                             <DataGridTextColumn Header="Наименование" Binding="{Binding Path=ProductName}" IsReadOnly = "True" Width="175" />
@@ -81,24 +81,33 @@
                     </DataGrid>
                     <Label x:Name="labelProductName" Content="Наименование" Margin="6,8,45,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Grid.ColumnSpan="3"/>
                     <TextBox x:Name="textBoxProductName" HorizontalAlignment="Left" Height="26" Margin="10,39.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Grid.Row="1" Grid.ColumnSpan="4"/>
-                    <Button x:Name="buttonProduct" Content="Сохранить" HorizontalAlignment="Left" Margin="29.8,39.2,0,0" VerticalAlignment="Top" Width="67" Height="26" Grid.Row="1" Grid.Column="5" Click="ButtonProduct_Click" />
-                    <Button x:Name="buttonProductClear" Content="Очистить" HorizontalAlignment="Left" Margin="57.8,39.2,0,0" VerticalAlignment="Top" Width="65" Height="27" Grid.Column="4" Grid.Row="1" Click="ButtonProductClear_Click" Grid.ColumnSpan="2"/>
+                    <Button x:Name="buttonProduct" Content="Сохранить" HorizontalAlignment="Left" Margin="80.4,49.2,0,0" VerticalAlignment="Top" Width="109" Height="29" Grid.Row="1" Grid.Column="5" Click="ButtonProduct_Click" />
+                    <Button x:Name="buttonProductClear" Content="Очистить" HorizontalAlignment="Left" Margin="10,39.2,0,0" VerticalAlignment="Top" Width="65" Height="27" Grid.Column="4" Grid.Row="1" Click="ButtonProductClear_Click"/>
                     <Label x:Name="labelProductName_Copy" Content="Цена" Margin="69,8,79,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Grid.Column="3"/>
                     <TextBox x:Name="priceTb" HorizontalAlignment="Left" Height="26" Margin="68.8,39.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="3"/>
-                    <Button x:Name="DelProdBtn" Content="Удалить" Grid.Column="5" HorizontalAlignment="Left" Margin="29.8,11.2,0,0" VerticalAlignment="Top" Width="67" Grid.Row="1" Click="DelProdBtn_Click"/>
+                    <Button x:Name="DelProdBtn" Content="Удалить" Grid.Column="5" HorizontalAlignment="Left" Margin="80.4,10.2,0,0" VerticalAlignment="Top" Width="109" Grid.Row="1" Click="DelProdBtn_Click" Height="33"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="idReceiptInvoices" Header="Приходные накладные" MouseEnter="IdReceiptInvoices_MouseEnter">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="dataGridReceiptInvoices" HorizontalAlignment="Left" Height="355" Margin="6,4,0,0" VerticalAlignment="Top" Width="770" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" SelectionChanged="DataGridStock_SelectionChanged">
+                    <DataGrid x:Name="dataGridReceiptInvoices" HorizontalAlignment="Left" Height="369" Margin="10,10,0,0" VerticalAlignment="Top" Width="853" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" PreviewMouseDoubleClick="dataGridReceiptInvoices_PreviewMouseDoubleClick" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=ReceiptInvoiceId}" IsReadOnly = "True" Width="50" />
-                            <DataGridTextColumn Header="Дата" Binding="{Binding Path=ReceiptInvoiceDate}" IsReadOnly = "True" Width="80" />
+                            <DataGridTextColumn Header="Дата" Binding="{Binding Path=ReceiptInvoiceDate}" IsReadOnly = "True" Width="120" />
                             <DataGridTextColumn Header="Поставщик" Binding="{Binding Path=Customer.CustomerName}" IsReadOnly = "True" Width="120" />
-                            <DataGridTextColumn Header="Склад" Binding="{Binding Path=StockName}" IsReadOnly = "True" Width="120" />
-                            <DataGridTextColumn Header="Товар" Binding="{Binding Path=Product.ProductName}"  IsReadOnly = "True" Width="120" />
-                            <DataGridTextColumn Header="Количество" Binding="{Binding Path=CountProduct}" IsReadOnly = "True" Width="100" />
-                            <DataGridTextColumn Header="Цена продукта" Binding="{Binding Path=Product.ProductPrice}" IsReadOnly = "True" Width="100" />
+                            <DataGridTextColumn Header="Склад" Binding="{Binding Path=Stock.StockName}" IsReadOnly = "True" Width="120" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="ProductInStock" Header="Товары на складе" MouseEnter="ProductInStock_MouseEnter">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="prodInStockGrid" HorizontalAlignment="Left" Height="369" Margin="10,10,0,0" VerticalAlignment="Top" Width="853" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False"  Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Продукт" Binding="{Binding Path=Product.ProductName}" IsReadOnly = "True" Width="120" />
+                            <DataGridTextColumn Header="Количество" Binding="{Binding Path=CountProduct}" IsReadOnly = "True" Width="120" />
+                            <DataGridTextColumn Header="Склад" Binding="{Binding Path=Stock.StockName}" IsReadOnly = "True" Width="120" />
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
@@ -109,15 +118,12 @@
                         <ColumnDefinition Width="338*"/>
                         <ColumnDefinition Width="443*"/>
                     </Grid.ColumnDefinitions>
-                    <DataGrid x:Name="dataGridExpenditureInvoices" HorizontalAlignment="Left" Height="378" Margin="6,4,0,0" VerticalAlignment="Top" Width="770" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False" SelectionChanged="DataGridStock_SelectionChanged" Grid.ColumnSpan="2">
+                    <DataGrid x:Name="dataGridExpenditureInvoices" HorizontalAlignment="Left" Height="369" Margin="10,10,0,0" VerticalAlignment="Top" Width="853" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False"  Grid.ColumnSpan="2" PreviewMouseDoubleClick="dataGridExpenditureInvoices_PreviewMouseDoubleClick">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=ExpenditureInvoiceId}" IsReadOnly = "True" Width="50" />
-                            <DataGridTextColumn Header="Дата" Binding="{Binding Path=ExpenditureInvoiceDate}" IsReadOnly = "True" Width="80" />
+                            <DataGridTextColumn Header="Дата" Binding="{Binding Path=ExpenditureInvoiceDate}" IsReadOnly = "True" Width="120" />
                             <DataGridTextColumn Header="Поставщик" Binding="{Binding Path=Customer.CustomerName}" IsReadOnly = "True" Width="120" />
-                            <DataGridTextColumn Header="Склад" Binding="{Binding Path=StockName}" IsReadOnly = "True" Width="120" />
-                            <DataGridTextColumn Header="Товар" Binding="{Binding Path=Product.ProductName}" IsReadOnly = "True" Width="120" />
-                            <DataGridTextColumn Header="Количество" Binding="{Binding Path=CountProduct}" IsReadOnly = "True" Width="100" />
-                            <DataGridTextColumn Header="Цена, ед." Binding="{Binding Path=PriceProduct}" IsReadOnly = "True" Width="100" />
+                            <DataGridTextColumn Header="Склад" Binding="{Binding Path=Stock.StockName}" IsReadOnly = "True" Width="120" />
                         </DataGrid.Columns>
                     </DataGrid>
 
@@ -125,30 +131,29 @@
             </TabItem>
             <TabItem x:Name="idExpenditureReceipt" Header="Приход/Отгрузка" MouseEnter="IdExpenditureReceipt_MouseEnter">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="48*"/>
+                        <RowDefinition Height="49*"/>
+                    </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="366*"/>
                         <ColumnDefinition Width="135*"/>
                         <ColumnDefinition Width="280*"/>
                     </Grid.ColumnDefinitions>
-                    <Label x:Name="labelExpenditureReceiptDate" Content="Дата" HorizontalAlignment="Left" Margin="10,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.807,2.859"/>
-                    <DatePicker x:Name="datePickerExpenditureReceiptDate" HorizontalAlignment="Left" Margin="10,192,0,0" VerticalAlignment="Top" Width="150"/>
-                    <Label x:Name="labelExpenditureReceiptProduct" Content="Продукт" HorizontalAlignment="Left" Margin="163,90,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBoxExpenditureReceiptProduct" HorizontalAlignment="Left" Margin="163,121,0,0" VerticalAlignment="Top" Width="150"/>
-                    <Label x:Name="labelExpenditureReceiptStock" Content="Склад" HorizontalAlignment="Left" Margin="177,161,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="labelExpenditureReceiptCompany" Content="Наценка" HorizontalAlignment="Left" Margin="150.4,89,0,0" VerticalAlignment="Top" Grid.Column="2"/>
-                    <ComboBox x:Name="comboBoxExpenditureReceiptCompany" HorizontalAlignment="Left" Margin="318,191,0,0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" Height="23"/>
-                    <Label x:Name="labelExpenditureReceiptCount" Content="Количество" HorizontalAlignment="Left" Margin="318,90,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="textBoxExpenditureReceiptCount" HorizontalAlignment="Left" Height="23" Margin="318,121,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="150" TextChanged="TextBoxExpenditureReceiptCount_TextChanged" Grid.ColumnSpan="2"/>
-                    <Label x:Name="labelExpenditureReceiptPrice" Content="Цена, ед" HorizontalAlignment="Left" Margin="113.6,90,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="1"/>
-                    <TextBox x:Name="textBoxExpenditureReceiptPrice" HorizontalAlignment="Left" Height="22" Margin="113.6,121,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="150" Grid.ColumnSpan="2" Grid.Column="1" />
-                    <Label x:Name="labelExpenditureReceiptOperation" Content="Операция" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBoxExpenditureReceiptOperation" HorizontalAlignment="Left" Margin="8,121,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ComboBoxExpenditureReceiptOperation_SelectionChanged"/>
-                    <Button x:Name="buttonExpenditureReceiptSave" Content="Сохранить" HorizontalAlignment="Left" Margin="150.4,189,0,0" VerticalAlignment="Top" Width="120" Height="24" Click="ButtonExpenditureReceiptSave_Click" Grid.Column="2"/>
-                    <TextBox x:Name="markupTb" Grid.Column="2" HorizontalAlignment="Left" Height="23" Margin="150.4,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-                    <ComboBox x:Name="stockCb" HorizontalAlignment="Left" Margin="177,193,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.108,1.682"/>
-                    <Label x:Name="labelExpenditureReceiptCompany_Copy" Content="Организация" HorizontalAlignment="Left" Margin="318,161,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Label x:Name="labelExpenditureReceiptDate" Content="Дата" HorizontalAlignment="Left" Margin="45,33,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.807,2.859" Grid.Column="2" Width="51"/>
+                    <DatePicker x:Name="datePickerExpenditureReceiptDate" HorizontalAlignment="Left" Margin="45,78,0,0" VerticalAlignment="Top" Width="192" Grid.Column="2"/>
+                    <Label x:Name="labelExpenditureReceiptStock" Content="Склад" HorizontalAlignment="Left" Margin="183,33,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBoxExpenditureReceiptCompany" HorizontalAlignment="Left" Margin="368,78,0,0" VerticalAlignment="Top" Width="192" Height="22" Grid.ColumnSpan="2"/>
+                    <Label x:Name="labelExpenditureReceiptOperation" Content="Операция" HorizontalAlignment="Left" Margin="10,33,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBoxExpenditureReceiptOperation" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="150" SelectionChanged="ComboBoxExpenditureReceiptOperation_SelectionChanged" />
+                    <ComboBox x:Name="stockCb" HorizontalAlignment="Left" Margin="183,78,0,0" VerticalAlignment="Top" Width="159" RenderTransformOrigin="-0.108,1.682"/>
+                    <Label x:Name="labelExpenditureReceiptCompany_Copy" Content="Организация" HorizontalAlignment="Left" Margin="368,33,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <Button x:Name="AddProductsBtn" Content="Добавить продукты в накладную" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="265" Height="24" Click="AddProductsBtn_Click"/>
+                    <Button x:Name="ExpenditureBtn" Content="Сформировать расход" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="265" Height="24" Click="ExpenditureBtn_Click"/>
                 </Grid>
             </TabItem>
+             
+            
             <TabItem x:Name="Report" Header="Отчеты" MouseEnter="IdExpenditureReceipt_MouseEnter" Margin="-2.2,0,-2,-0.2">
                 <Grid Background="#FFE5E5E5" Margin="0,-2,-0.4,1.8">
                     <Grid.ColumnDefinitions>
@@ -170,6 +175,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="ExitBtn" Content="Выход" HorizontalAlignment="Left" Margin="700,-1,0,0" VerticalAlignment="Top" Width="75" Height="22" Click="ExitBtn_Click"/>
+        <Button x:Name="ExitBtn" Content="Выход" HorizontalAlignment="Left" Margin="790,1,0,0" VerticalAlignment="Top" Width="90" Height="21" Click="ExitBtn_Click" BorderBrush="#FFACACAC"/>
     </Grid>
 </Window>
