@@ -1,16 +1,13 @@
-﻿using Microsoft.Win32;
-using Npgsql;
-using NpgsqlTypes;
+﻿using NpgsqlTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Xml.Linq;
 using CourseApp.Services;
 using CourseApp.Models;
-using CourseApp.Utility;
+
 
 namespace CourseApp
 {
@@ -24,7 +21,10 @@ namespace CourseApp
         /// </summary>
         private int userId;
         private string roleKey = "";
-        private Reports r = new Reports();
+        /// <summary>
+        /// Для вызова отчетов
+        /// </summary>
+        private Reports reports = new Reports();
         private User selectedUser = null;
         private Product selectedProduct = null;
         private Customer selectedCustomer = null;
@@ -431,7 +431,7 @@ namespace CourseApp
             stockCb.ItemsSource = _stockService.GetAll()?.Select(p => p.StockName);
             comboBoxExpenditureReceiptCompany.ItemsSource = _customerService.GetAll()?.Select(c => c.CustomerName);
             comboBoxExpenditureReceiptOperation.ItemsSource = new List<string>() { "Приход", "Отгрузка" };
-            comboBoxExpenditureReceiptStockC.ItemsSource = stockCb.ItemsSource;
+            ReportComboBox.ItemsSource = stockCb.ItemsSource;
         }
 
         /// <summary>
@@ -566,83 +566,23 @@ namespace CourseApp
 
 
         /// <summary>
-        /// Получение отчета
+        /// Получение отчета по складу
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonReportC_Click(object sender, RoutedEventArgs e)
         {
-            if (comboBoxExpenditureReceiptStockC == null ||
-                comboBoxExpenditureReceiptStockC.SelectedItem == null)
-            {
-                MessageBox.Show("Выберите склад");
-            }
-            else
-            {
-                DbConnection connection = new DbConnection();
-                try
-                {
-                    int stockId = _stockService.GetAll()
-                                               .FirstOrDefault(o => o.StockName.Equals(comboBoxExpenditureReceiptStockC.SelectedItem.ToString()))
-                                               .StockId;
-
-                    string query = "SELECT stocks.stock_name, products.product_name, sum(receipt_invoices.count_product)" +
-                                    " FROM receipt_invoices" +
-                                    " JOIN stocks ON stocks.stock_id = receipt_invoices.stock_id" +
-                                    " JOIN products ON products.product_id = receipt_invoices.product_id" +
-                                    " WHERE receipt_invoices.stock_id = " + stockId +
-                                    " GROUP BY stocks.stock_name, products.product_name";
-
-                    NpgsqlCommand command = new NpgsqlCommand(query, connection.GetConnection());
-                    NpgsqlDataReader reader = command.ExecuteReader();
-
-                    XDocument xdoc = new XDocument();
-                    XElement stocks = new XElement("Склады");
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            XElement stock = new XElement("Склад");
-                            XAttribute istockNameAttr = new XAttribute("Наименование", reader["stock_name"].ToString());
-                            XElement istockProductElem = new XElement("Продукт", reader["product_name"].ToString());
-                            XElement istockSumElem = new XElement("Количество", reader["sum"].ToString());
-                            stock.Add(istockNameAttr);
-                            stock.Add(istockProductElem);
-                            stock.Add(istockSumElem);
-                            stocks.Add(stock);
-                        }
-                        reader.Close();
-
-                    }
-                    xdoc.Add(stocks);
-
-                    SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.Filter = "XML-File | *.xml";
-                    if (saveFileDialog.ShowDialog() == true)
-                    {
-                        xdoc.Save(saveFileDialog.FileName);
-                        MessageBox.Show("Файл сохранен");
-                    }
-                }
-                catch (NpgsqlException ex)
-                {
-
-                }
-                finally
-                {
-                    connection.CloseConnection();
-                }
-            }
+            var stockId = _stockService.GetAll().SingleOrDefault(p => p.StockName.Equals(ReportComboBox.SelectedItem)).StockId;
+            reports.GerReportS(stockId,ReportComboBox);
         }
         /// <summary>
-        /// Получение отчета
+        /// Получение отчета по всем складам
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonReportCA_Click(object sender, RoutedEventArgs e)
         {
-            r.GetReportCA();
+            reports.GetReportAS();
         }
         /// <summary>
         /// Получение отчета
@@ -653,21 +593,18 @@ namespace CourseApp
         {
             string dataFrom = datePickerExpenditureReceiptDateFrom.DisplayDate.ToString("yyyy-MM-dd");
             string dataTo = datePickerExpenditureReceiptDateTo.DisplayDate.ToString("yyyy-MM-dd");
-            r.GetReportCK(dataFrom, dataTo);
+            reports.GetReportDS(dataFrom, dataTo);
         }
         /// <summary>
-        /// Получение отчета
+        /// Получение отчета о наиболее доходных товарах
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
         private void ButtonReportCL_Click(object sender, RoutedEventArgs e)
         {
-
-            r.GetReportCL();
+            reports.GetReportD();
         }
-
-
         /// <summary>
         /// Выход в окно регистрации
         /// </summary>
@@ -678,9 +615,6 @@ namespace CourseApp
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
-
-        }
-
-        
+        }     
     }
 }

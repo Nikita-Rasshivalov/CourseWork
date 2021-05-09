@@ -162,7 +162,7 @@
                         <ColumnDefinition Width="280*"/>
                     </Grid.ColumnDefinitions>
                     <Label x:Name="labelExpenditureReceiptStockC" Content="Склад" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBoxExpenditureReceiptStockC" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="297"/>
+                    <ComboBox x:Name="ReportComboBox" HorizontalAlignment="Left" Margin="10,123,0,0" VerticalAlignment="Top" Width="297"/>
                     <Button x:Name="buttonReportC" Content="Получить отчет по складу" HorizontalAlignment="Left" Margin="331,126,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportC_Click" Grid.ColumnSpan="3"/>
                     <Button x:Name="buttonReportCA" Content="Получить отчет по всем складам" HorizontalAlignment="Left" Margin="48.4,126,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportCA_Click" Grid.Column="2"/>
                     <Label x:Name="labelReports" Content="Отчеты:" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" FontStyle="Italic"/>
@@ -171,7 +171,7 @@
                     <Label x:Name="labelExpenditureReceiptDateTo" Content="Дата по" HorizontalAlignment="Left" Margin="171,162,0,0" VerticalAlignment="Top"/>
                     <DatePicker x:Name="datePickerExpenditureReceiptDateTo" HorizontalAlignment="Left" Margin="171,201,0,0" VerticalAlignment="Top" Width="150"/>
                     <Button x:Name="buttonReportCK" Content="Полученная прибыль по складам" HorizontalAlignment="Left" Margin="331,205,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportCK_Click" Grid.ColumnSpan="3"/>
-                    <Button x:Name="buttonReportCL" Content="Наиболее доходный товар" HorizontalAlignment="Left" Margin="48.4,205,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportCL_Click" Grid.Column="2"/>
+                    <Button x:Name="buttonReportCL" Content="Наиболее доходный товары" HorizontalAlignment="Left" Margin="48.4,205,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportCL_Click" Grid.Column="2"/>
                 </Grid>
             </TabItem>
         </TabControl>
