@@ -24,7 +24,7 @@ namespace CourseApp
         /// <summary>
         /// Для вызова отчетов
         /// </summary>
-        private Reports reports = new Reports();
+        private Report.Reports reports = new Report.Reports();
         private User selectedUser = null;
         private Product selectedProduct = null;
         private Customer selectedCustomer = null;
@@ -182,35 +182,43 @@ namespace CourseApp
         /// <param name="e"></param>
         private void ButtonUser_Click(object sender, RoutedEventArgs e)
         {
-            if (selectedUser != null)
+            if (comboBoxUserRole.SelectedItem != null)
             {
-                selectedUser.UserName = textBoxUserName.Text;
-                selectedUser.FullName = textBoxUserFullName.Text;
-                selectedUser.UserPass = passwordBoxUser.Password;
-                selectedUser.RoleKey = comboBoxUserRole.SelectedItem.ToString();
+                if (selectedUser != null)
+                {
+                    selectedUser.UserName = textBoxUserName.Text;
+                    selectedUser.FullName = textBoxUserFullName.Text;
+                    selectedUser.UserPass = passwordBoxUser.Password;
+                    selectedUser.RoleKey = comboBoxUserRole.SelectedItem.ToString();
 
-                _userService.Update(selectedUser);
+                    _userService.Update(selectedUser);
 
-                selectedUser = null;
-                textBoxUserName.Text = "";
-                textBoxUserFullName.Text = "";
-                passwordBoxUser.Password = "";
+                    selectedUser = null;
+                    textBoxUserName.Text = "";
+                    textBoxUserFullName.Text = "";
+                    passwordBoxUser.Password = "";
+                }
+                else
+                {
+                    _userService.Insert(new User
+                    {
+                        UserName = textBoxUserName.Text,
+                        FullName = textBoxUserFullName.Text,
+                        UserPass = passwordBoxUser.Password,
+                        RoleKey = comboBoxUserRole.SelectedItem.ToString()
+                    });
+
+                    selectedUser = null;
+                    textBoxUserName.Text = "";
+                    textBoxUserFullName.Text = "";
+                    passwordBoxUser.Password = "";
+                }
             }
             else
             {
-                _userService.Insert(new User
-                {
-                    UserName = textBoxUserName.Text,
-                    FullName = textBoxUserFullName.Text,
-                    UserPass = passwordBoxUser.Password,
-                    RoleKey = comboBoxUserRole.SelectedItem.ToString()
-                });
-
-                selectedUser = null;
-                textBoxUserName.Text = "";
-                textBoxUserFullName.Text = "";
-                passwordBoxUser.Password = "";
+                MessageBox.Show("Выберите роль!");
             }
+           
             dataGridUser.ItemsSource = _userService.GetAll();
             comboBoxUserRole.ItemsSource = _roleService.GetAll().Select(o => o.RoleKey);
         }
@@ -573,7 +581,7 @@ namespace CourseApp
         private void ButtonReportC_Click(object sender, RoutedEventArgs e)
         {
             var stockId = _stockService.GetAll().SingleOrDefault(p => p.StockName.Equals(ReportComboBox.SelectedItem)).StockId;
-            reports.GerReportS(stockId,ReportComboBox);
+            reports.GetReportS(stockId,ReportComboBox);
         }
         /// <summary>
         /// Получение отчета по всем складам

@@ -93,7 +93,8 @@
     <Compile Include="Models\Stock.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Role.cs" />
-    <Compile Include="Reports.cs" />
+    <Compile Include="Report\IReportService.cs" />
+    <Compile Include="Report\Reports.cs" />
     <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\ExpenditureInvoiceService.cs" />
     <Compile Include="Services\ExpenditurePositionService.cs" />
@@ -160,6 +161,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

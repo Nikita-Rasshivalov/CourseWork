@@ -4,10 +4,11 @@ using System.Windows;
 using System.Xml.Linq;
 using CourseApp.Utility;
 using System.Windows.Controls;
+using CourseApp.Reports;
 
-namespace CourseApp
+namespace CourseApp.Report
 {
-    public class Reports
+    public class Reports:IReportService
     {
         public Reports()
         {
@@ -16,7 +17,7 @@ namespace CourseApp
         /// <summary>
         /// Получение отчета по складу
         /// </summary>
-        public void GerReportS(int stockId, ComboBox ReportComboBox)
+        public void GetReportS(int stockId, ComboBox ReportComboBox)
         {
             if (ReportComboBox == null ||
                 ReportComboBox.SelectedItem == null)

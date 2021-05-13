@@ -152,7 +152,6 @@ C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\Npgsql.xm
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\bin\Debug\System.ValueTuple.xml
-C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\MainWindow.g.cs
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\WorkWindow.g.cs
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\App.g.cs
@@ -175,3 +174,4 @@ C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EInvoiceD
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EInvoiceDetalisationWindow.baml
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EAddProdWindow.g.cs
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EAddProdWindow.baml
+C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache

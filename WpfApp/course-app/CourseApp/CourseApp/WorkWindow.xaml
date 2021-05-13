@@ -23,6 +23,8 @@
                     <Button x:Name="buttonCustomer" Content="Сохранить" HorizontalAlignment="Left" Margin="746,344,0,0" VerticalAlignment="Top" Width="110" Height="22" Click="ButtonCustomer_Click"/>
                     <Button x:Name="buttonCustomerClear" Content="Очистить" HorizontalAlignment="Left" Margin="627,344,0,0" VerticalAlignment="Top" Width="101" Height="22" Click="ButtonCustomerClear_Click"/>
                     <Button x:Name="DelOrganisationBtn" Content="Удалить" HorizontalAlignment="Left" Margin="746,308,0,0" VerticalAlignment="Top" Width="110" Click="DellOrganisationBtn_Click" Height="24"/>
+                    <Label Content="Наименование" HorizontalAlignment="Left" Margin="6,298,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Описание" HorizontalAlignment="Left" Margin="301,298,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="idUser" Header="Пользователи" MouseEnter="IdUser_MouseEnter">
@@ -122,7 +124,7 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Path=ExpenditureInvoiceId}" IsReadOnly = "True" Width="50" />
                             <DataGridTextColumn Header="Дата" Binding="{Binding Path=ExpenditureInvoiceDate}" IsReadOnly = "True" Width="120" />
-                            <DataGridTextColumn Header="Поставщик" Binding="{Binding Path=Customer.CustomerName}" IsReadOnly = "True" Width="120" />
+                            <DataGridTextColumn Header="Покупатель" Binding="{Binding Path=Customer.CustomerName}" IsReadOnly = "True" Width="120" />
                             <DataGridTextColumn Header="Склад" Binding="{Binding Path=Stock.StockName}" IsReadOnly = "True" Width="120" />
                         </DataGrid.Columns>
                     </DataGrid>
@@ -171,7 +173,7 @@
                     <Label x:Name="labelExpenditureReceiptDateTo" Content="Дата по" HorizontalAlignment="Left" Margin="171,162,0,0" VerticalAlignment="Top"/>
                     <DatePicker x:Name="datePickerExpenditureReceiptDateTo" HorizontalAlignment="Left" Margin="171,201,0,0" VerticalAlignment="Top" Width="150"/>
                     <Button x:Name="buttonReportCK" Content="Полученная прибыль по складам" HorizontalAlignment="Left" Margin="331,205,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportCK_Click" Grid.ColumnSpan="3"/>
-                    <Button x:Name="buttonReportCL" Content="Наиболее доходный товары" HorizontalAlignment="Left" Margin="48.4,205,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportCL_Click" Grid.Column="2"/>
+                    <Button x:Name="buttonReportCL" Content="Наиболее доходные товары" HorizontalAlignment="Left" Margin="48.4,205,0,0" VerticalAlignment="Top" Width="214" Click="ButtonReportCL_Click" Grid.Column="2"/>
                 </Grid>
             </TabItem>
         </TabControl>
