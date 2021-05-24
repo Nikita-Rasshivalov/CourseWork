@@ -10,7 +10,7 @@ namespace CourseAppTests
     public class ProductServiceTest
     {
         IService<Product> service = new ProductService();
-        static Product testCustomer = new Product() { ProductName = "TestName" };
+        static Product testProd = new Product() { ProductName = "TestName" };
 
         [TestMethod]
         public void AGetAllTest()
@@ -21,21 +21,21 @@ namespace CourseAppTests
         [TestMethod]
         public void BInsertTest()
         {
-            Assert.AreEqual(true, service.Insert(testCustomer));
+            Assert.AreEqual(true, service.Insert(testProd));
         }
 
         [TestMethod]
         public void CUpdateTest()
         {
             var updateItem = service.GetAll()
-                                    .FirstOrDefault(c => c.ProductName == testCustomer.ProductName);
+                                    .FirstOrDefault(c => c.ProductName == testProd.ProductName);
 
             updateItem.ProductName = "NewTestName";
 
             Assert.AreEqual(true, service.Update(updateItem));
 
-            testCustomer.EntityId = updateItem.EntityId;
-            updateItem.ProductName = testCustomer.ProductName;
+            testProd.EntityId = updateItem.EntityId;
+            updateItem.ProductName = testProd.ProductName;
 
             service.Update(updateItem);
         }
@@ -43,16 +43,16 @@ namespace CourseAppTests
         [TestMethod]
         public void DGetByIdTest()
         {
-            var findItem = service.GetById(testCustomer.EntityId);
+            var findItem = service.GetById(testProd.EntityId);
 
-            Assert.AreEqual(findItem.ProductName, testCustomer.ProductName);
-            Assert.AreEqual(findItem.EntityId, testCustomer.EntityId);
+            Assert.AreEqual(findItem.ProductName, testProd.ProductName);
+            Assert.AreEqual(findItem.EntityId, testProd.EntityId);
         }
 
         [TestMethod]
         public void EDeleteTest()
         {
-            Assert.AreEqual(true, service.Delete(testCustomer));
+            Assert.AreEqual(true, service.Delete(testProd));
         }
     }
 }

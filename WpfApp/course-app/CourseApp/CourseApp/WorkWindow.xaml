@@ -52,12 +52,13 @@
                     <Label x:Name="labelUserRole" Content="Роль" Margin="102,21.2,469.6,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Width="150" Grid.Column="2" Grid.ColumnSpan="2"/>
                     <Label x:Name="labelUserPass" Content="Пароль" Margin="115.8,21.2,320.6,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Width="150" Grid.Column="3"/>
                     <PasswordBox x:Name="passwordBoxUser" HorizontalAlignment="Left" Margin="116.8,47.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="154" Height="30" Grid.Column="3"/>
-                    <Label x:Name="labelUserFullName" Content="ФИО" Margin="277.8,21.2,162.6,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Grid.Column="3"/>
+                    <Label x:Name="labelUserFullName" Content="ФИО" Margin="277.4,21.2,227.8,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Grid.Column="3"/>
                     <TextBox x:Name="textBoxUserFullName" HorizontalAlignment="Left" Height="30" Margin="277.8,47.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="150" Grid.Row="1" Grid.Column="3"/>
                     <Button x:Name="buttonUser" Content="Сохранить" HorizontalAlignment="Left" Margin="551.4,47.2,0,0" VerticalAlignment="Top" Width="94" Height="31" Grid.Row="1" Click="ButtonUser_Click" Grid.Column="3" />
                     <Button x:Name="buttonUserClear" Content="Очистить" HorizontalAlignment="Left" Margin="451.4,47.2,0,0" VerticalAlignment="Top" Width="81" Height="31" Click="ButtonUserClear_Click" Grid.Column="3" Grid.Row="1"/>
-                    <Button x:Name="DelUserBtn" Content="Удалить" Grid.Column="3" HorizontalAlignment="Left" Margin="551.4,10.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Click="DelUserBtn_Click" Height="30"/>
+                    <Button x:Name="DelUserBtn" Content="Удалить" Grid.Column="3" HorizontalAlignment="Left" Margin="551.4,4.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="94" Click="DelUserBtn_Click" Height="36"/>
                     <ComboBox x:Name="comboBoxUserRole" Grid.Column="2" HorizontalAlignment="Left" Margin="101,47.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2" Height="30"/>
+                    <Button x:Name="AddStockBtn" Content="Добавить&#xD;&#xA;   склад" Grid.Column="3" HorizontalAlignment="Left" Margin="451.4,4.2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="81" Height="36" FontSize="11" Click="AddStockBtn_Click"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="idProduct" Header="Продукция" MouseEnter="IdProduct_MouseEnter">
@@ -86,7 +87,7 @@
                     <Button x:Name="buttonProduct" Content="Сохранить" HorizontalAlignment="Left" Margin="80.4,49.2,0,0" VerticalAlignment="Top" Width="109" Height="29" Grid.Row="1" Grid.Column="5" Click="ButtonProduct_Click" />
                     <Button x:Name="buttonProductClear" Content="Очистить" HorizontalAlignment="Left" Margin="10,39.2,0,0" VerticalAlignment="Top" Width="65" Height="27" Grid.Column="4" Grid.Row="1" Click="ButtonProductClear_Click"/>
                     <Label x:Name="labelProductName_Copy" Content="Цена" Margin="69,8,79,0" Grid.Row="1" RenderTransformOrigin="-0.703,0.14" Height="26" VerticalAlignment="Top" Grid.Column="3"/>
-                    <TextBox x:Name="priceTb" HorizontalAlignment="Left" Height="26" Margin="68.8,39.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="3"/>
+                    <TextBox x:Name="priceTb" HorizontalAlignment="Left" Height="26" Margin="68.8,39.2,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="230" Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="3" PreviewTextInput="priceTb_PreviewTextInput"/>
                     <Button x:Name="DelProdBtn" Content="Удалить" Grid.Column="5" HorizontalAlignment="Left" Margin="80.4,10.2,0,0" VerticalAlignment="Top" Width="109" Grid.Row="1" Click="DelProdBtn_Click" Height="33"/>
                 </Grid>
             </TabItem>
@@ -154,8 +155,8 @@
                     <Button x:Name="ExpenditureBtn" Content="Сформировать расход" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" Width="265" Height="24" Click="ExpenditureBtn_Click"/>
                 </Grid>
             </TabItem>
-             
-            
+
+
             <TabItem x:Name="Report" Header="Отчеты" MouseEnter="IdExpenditureReceipt_MouseEnter" Margin="-2.2,0,-2,-0.2">
                 <Grid Background="#FFE5E5E5" Margin="0,-2,-0.4,1.8">
                     <Grid.ColumnDefinitions>
@@ -177,6 +178,6 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="ExitBtn" Content="Выход" HorizontalAlignment="Left" Margin="790,1,0,0" VerticalAlignment="Top" Width="90" Height="21" Click="ExitBtn_Click" BorderBrush="#FFACACAC"/>
+        <Button x:Name="ExitBtn" Content="Выход" HorizontalAlignment="Left" Margin="790,1,0,0" VerticalAlignment="Top" Width="90" Height="20" Click="ExitBtn_Click" BorderBrush="#FFACACAC"/>
     </Grid>
 </Window>

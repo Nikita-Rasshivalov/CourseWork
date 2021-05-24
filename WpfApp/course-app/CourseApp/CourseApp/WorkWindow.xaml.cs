@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using CourseApp.Services;
 using CourseApp.Models;
-
+using System.Globalization;
 
 namespace CourseApp
 {
@@ -21,13 +21,14 @@ namespace CourseApp
         /// </summary>
         private int userId;
         private string roleKey = "";
+        private User selectedUser = null;
+        private Product selectedProduct = null;
+        private Customer selectedCustomer = null;
         /// <summary>
         /// Для вызова отчетов
         /// </summary>
         private Report.Reports reports = new Report.Reports();
-        private User selectedUser = null;
-        private Product selectedProduct = null;
-        private Customer selectedCustomer = null;
+
 
         // Инициализация сервисов для работы с таблицами в БД.
         IService<User> _userService = new UserService();
@@ -70,6 +71,21 @@ namespace CourseApp
             idExpenditureReceipt.Visibility = !roleKey.Equals("manager") ? Visibility.Visible : Visibility.Hidden;
             AddProductsBtn.Visibility = Visibility.Hidden;
             ExpenditureBtn.Visibility = Visibility.Hidden;
+            if (roleKey.Equals("manager"))
+            {
+                ProductInStock.Margin = new Thickness(-250.2, 0, 250, 0);
+                idExpenditureInvoices.Margin = new Thickness(-250, 0, 249.6, 0);
+                idReceiptInvoices.Margin = new Thickness(-250, 0, 250.4, 0);
+                Report.Margin = new Thickness(-356.8, 0, 352.6, 0);
+            }
+            if (roleKey.Equals("stoker"))
+            {
+                ProductInStock.Margin = new Thickness(-250.2, 0, 250, 0);
+                idExpenditureInvoices.Margin = new Thickness(-250, 0, 249.6, 0);
+                idReceiptInvoices.Margin = new Thickness(-250, 0, 250.4, 0);
+                idExpenditureReceipt.Margin = new Thickness(-249.6, 0, 249.8, 0);
+                Report.Margin = new Thickness(-251.8, 0, 247.6, 0);
+            }
         }
 
         /// <summary>
@@ -182,7 +198,8 @@ namespace CourseApp
         /// <param name="e"></param>
         private void ButtonUser_Click(object sender, RoutedEventArgs e)
         {
-            if (comboBoxUserRole.SelectedItem != null)
+            if (comboBoxUserRole.SelectedItem != null && textBoxUserName.Text != ""
+                && textBoxUserFullName.Text != "" && passwordBoxUser.Password != "")
             {
                 if (selectedUser != null)
                 {
@@ -190,9 +207,7 @@ namespace CourseApp
                     selectedUser.FullName = textBoxUserFullName.Text;
                     selectedUser.UserPass = passwordBoxUser.Password;
                     selectedUser.RoleKey = comboBoxUserRole.SelectedItem.ToString();
-
                     _userService.Update(selectedUser);
-
                     selectedUser = null;
                     textBoxUserName.Text = "";
                     textBoxUserFullName.Text = "";
@@ -207,7 +222,6 @@ namespace CourseApp
                         UserPass = passwordBoxUser.Password,
                         RoleKey = comboBoxUserRole.SelectedItem.ToString()
                     });
-
                     selectedUser = null;
                     textBoxUserName.Text = "";
                     textBoxUserFullName.Text = "";
@@ -216,9 +230,8 @@ namespace CourseApp
             }
             else
             {
-                MessageBox.Show("Выберите роль!");
+                MessageBox.Show("Заполните все поля!");
             }
-           
             dataGridUser.ItemsSource = _userService.GetAll();
             comboBoxUserRole.ItemsSource = _roleService.GetAll().Select(o => o.RoleKey);
         }
@@ -283,6 +296,16 @@ namespace CourseApp
         }
 
         /// <summary>
+        /// Добавление склада
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AddStockBtn_Click(object sender, RoutedEventArgs e)
+        {
+            new AddStockWindow().ShowDialog();
+        }
+
+        /// <summary>
         /// Очистка контролов продуктов.
         /// </summary>
         /// <param name="sender"></param>
@@ -293,7 +316,26 @@ namespace CourseApp
             textBoxProductName.Text = "";
             priceTb.Text = "";
         }
-
+        /// <summary>
+        /// Ввод только чисел в priceBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void priceTb_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (e.Text == ".")
+            {
+                var text = ((TextBox)sender).Text;
+                if (text.Contains(".") || text.Length == 0)
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (!(Char.IsDigit(e.Text, 0)))
+            {
+                e.Handled = true;
+            }
+        }
         /// <summary>
         /// Добавление/обновление продукта.
         /// </summary>
@@ -301,28 +343,33 @@ namespace CourseApp
         /// <param name="e"></param>
         private void ButtonProduct_Click(object sender, RoutedEventArgs e)
         {
+            double price;
+            double.TryParse(priceTb.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out price);
             if (selectedProduct != null)
             {
                 selectedProduct.ProductName = textBoxProductName.Text;
-                selectedProduct.ProductPrice = Convert.ToDouble(priceTb.Text);
-
+                selectedProduct.ProductPrice = Math.Round(price, 2, MidpointRounding.AwayFromZero);
                 _productService.Update(selectedProduct);
-
                 selectedProduct = null;
                 textBoxProductName.Text = priceTb.Text = "";
             }
             else
             {
-                _productService.Insert(new Product
+                if (textBoxProductName.Text != "" && priceTb.Text != "")
                 {
-                    ProductName = textBoxProductName.Text,
-                    ProductPrice = Convert.ToDouble(priceTb.Text)
-                });
-
+                    _productService.Insert(new Product
+                    {
+                        ProductName = textBoxProductName.Text,
+                        ProductPrice = Math.Round(price, 2, MidpointRounding.AwayFromZero)
+                    });
+                }
+                else
+                {
+                    MessageBox.Show("Заполните все поля!");
+                }
                 selectedProduct = null;
                 textBoxProductName.Text = priceTb.Text = "";
             }
-
             dataGridProduct.ItemsSource = _productService.GetAll();
         }
 
@@ -361,7 +408,8 @@ namespace CourseApp
             {
                 if (_productService.Delete((Product)dataGridProduct.SelectedItem) == false)
                 {
-                    MessageBox.Show($"Удаление запрещено, другие записи имеют ссылку на выбранный продукт.", "Информация", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"Удаление запрещено, другие записи имеют ссылку на выбранный продукт.",
+                        "Информация", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 else
                 {
@@ -436,10 +484,26 @@ namespace CourseApp
         private void IdExpenditureReceipt_MouseEnter(object sender, MouseEventArgs e)
         {
             var stocks = _stockService.GetAll();
-            stockCb.ItemsSource = _stockService.GetAll()?.Select(p => p.StockName);
+            switch (roleKey)
+            {
+                case "admin":
+                    stockCb.ItemsSource = stocks?
+                        .Select(p => p.StockName);
+                    break;
+                case "stoker":
+                    stockCb.ItemsSource = stocks?
+                        .Where(p => p.UserId.Equals(userId))
+                        .Select(p => p.StockName);
+                    break;
+                default:
+                    stockCb.ItemsSource = stocks?
+                        .Select(p => p.StockName);
+                    break;
+            }
+
             comboBoxExpenditureReceiptCompany.ItemsSource = _customerService.GetAll()?.Select(c => c.CustomerName);
             comboBoxExpenditureReceiptOperation.ItemsSource = new List<string>() { "Приход", "Отгрузка" };
-            ReportComboBox.ItemsSource = stockCb.ItemsSource;
+            ReportComboBox.ItemsSource = stocks.Select(p => p.StockName);
         }
 
         /// <summary>
@@ -449,28 +513,28 @@ namespace CourseApp
         /// <param name="e"></param> 
         private void AddProductsBtn_Click(object sender, RoutedEventArgs e)
         {
-            var stckId = _stockService.GetAll()
-                         .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString())).StockId;
-
-            AddProdWindow add = new AddProdWindow(stckId);
-
-            if (stockCb.SelectedItem == null && comboBoxExpenditureReceiptCompany.SelectedItem == null && datePickerExpenditureReceiptDate.SelectedDate == null)
+            if (stockCb.SelectedItem == null && comboBoxExpenditureReceiptCompany.SelectedItem == null
+                && datePickerExpenditureReceiptDate.SelectedDate == null)
             {
                 MessageBox.Show("Заполните все данные");
             }
             else
             {
+                var stckId = _stockService.GetAll()
+                       .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString())).StockId;
+
+                AddProdWindow add = new AddProdWindow(stckId);
                 _receiptInvoiceService.Insert(new ReceiptInvoice
                 {
                     ReceiptInvoiceDate = (NpgsqlDate)datePickerExpenditureReceiptDate.SelectedDate,
                     CustomerId = _customerService.GetAll()
-                          .SingleOrDefault(p => p.CustomerName.Equals(comboBoxExpenditureReceiptCompany.SelectedItem.ToString())).CustomerId,
+                          .SingleOrDefault(p => p.CustomerName.Equals(comboBoxExpenditureReceiptCompany.SelectedItem.ToString()))
+                          .CustomerId,
                     StockId = _stockService.GetAll()
                           .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString())).StockId
                 });
                 add.ShowDialog();
             }
-
         }
 
         /// <summary>
@@ -480,9 +544,12 @@ namespace CourseApp
         /// <param name="e"></param>
         private void dataGridReceiptInvoices_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var stockItem = (ReceiptInvoice)dataGridReceiptInvoices.SelectedItem;
-            InvoiceDetalisationWindow details = new InvoiceDetalisationWindow(stockItem);
-            details.ShowDialog();
+            if (dataGridReceiptInvoices.SelectedItem != null)
+            {
+                var stockItem = (ReceiptInvoice)dataGridReceiptInvoices.SelectedItem;
+                InvoiceDetalisationWindow details = new InvoiceDetalisationWindow(stockItem);
+                details.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -492,11 +559,9 @@ namespace CourseApp
         /// <param name="e"></param>
         private void ComboBoxExpenditureReceiptOperation_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             if (comboBoxExpenditureReceiptOperation.SelectedItem != null &&
                 comboBoxExpenditureReceiptOperation.SelectedItem.ToString() == "Отгрузка")
             {
-
                 stockCb.Visibility = Visibility.Visible;
                 AddProductsBtn.Visibility = Visibility.Hidden;
                 ExpenditureBtn.Visibility = Visibility.Visible;
@@ -515,9 +580,12 @@ namespace CourseApp
         /// <param name="e"></param>
         private void dataGridExpenditureInvoices_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var stockItem = (ExpenditureInvoice)dataGridExpenditureInvoices.SelectedItem;
-            EInvoiceDetalisationWindow edetails = new EInvoiceDetalisationWindow(stockItem);
-            edetails.ShowDialog();
+            if (dataGridExpenditureInvoices.SelectedItem != null)
+            {
+                var stockItem = (ExpenditureInvoice)dataGridExpenditureInvoices.SelectedItem;
+                EInvoiceDetalisationWindow edetails = new EInvoiceDetalisationWindow(stockItem);
+                edetails.ShowDialog();
+            }
         }
 
         /// <summary>
@@ -527,27 +595,28 @@ namespace CourseApp
         /// <param name="e"></param>
         private void ExpenditureBtn_Click(object sender, RoutedEventArgs e)
         {
-            double markup = _stockService.GetAll()
-                       .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString()))
-                       .Markup;
-       
-            int stockId = _stockService.GetAll()
-                       .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString()))
-                       .StockId;
-           
-
-            EAddProdWindow add = new EAddProdWindow(markup, stockId);
             if (stockCb.SelectedItem == null && comboBoxExpenditureReceiptCompany.SelectedItem == null && datePickerExpenditureReceiptDate.SelectedDate == null)
             {
                 MessageBox.Show("Заполните все данные");
             }
             else
             {
+                double markup = _stockService.GetAll()
+           .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString()))
+           .Markup;
+
+                int stockId = _stockService.GetAll()
+                           .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString()))
+                           .StockId;
+
+
+                EAddProdWindow add = new EAddProdWindow(markup, stockId);
                 _expenditureInvoiceService.Insert(new ExpenditureInvoice
                 {
                     ExpenditureInvoiceDate = (NpgsqlDate)datePickerExpenditureReceiptDate.SelectedDate,
                     CustomerId = _customerService.GetAll()
-                          .SingleOrDefault(p => p.CustomerName.Equals(comboBoxExpenditureReceiptCompany.SelectedItem.ToString())).CustomerId,
+                          .SingleOrDefault(p => p.CustomerName.Equals(comboBoxExpenditureReceiptCompany.SelectedItem.ToString()))
+                          .CustomerId,
                     StockId = _stockService.GetAll()
                           .SingleOrDefault(p => p.StockName.Equals(stockCb.SelectedItem.ToString())).StockId
                 });
@@ -580,8 +649,17 @@ namespace CourseApp
         /// <param name="e"></param>
         private void ButtonReportC_Click(object sender, RoutedEventArgs e)
         {
-            var stockId = _stockService.GetAll().SingleOrDefault(p => p.StockName.Equals(ReportComboBox.SelectedItem)).StockId;
-            reports.GetReportS(stockId,ReportComboBox);
+            if (ReportComboBox.SelectedItem != null)
+            {
+                var stockId = _stockService.GetAll()
+                    .SingleOrDefault(p => p.StockName.Equals(ReportComboBox.SelectedItem)).StockId;
+                reports.GetReportS(stockId, ReportComboBox);
+            }
+            else
+            {
+                MessageBox.Show("Выбирете склад");
+            }
+
         }
         /// <summary>
         /// Получение отчета по всем складам
@@ -599,9 +677,17 @@ namespace CourseApp
         /// <param name="e"></param>
         private void ButtonReportCK_Click(object sender, RoutedEventArgs e)
         {
-            string dataFrom = datePickerExpenditureReceiptDateFrom.DisplayDate.ToString("yyyy-MM-dd");
-            string dataTo = datePickerExpenditureReceiptDateTo.DisplayDate.ToString("yyyy-MM-dd");
-            reports.GetReportDS(dataFrom, dataTo);
+            if (datePickerExpenditureReceiptDateFrom.SelectedDate != null && datePickerExpenditureReceiptDateTo.SelectedDate != null)
+            {
+                string dataFrom = datePickerExpenditureReceiptDateFrom.DisplayDate.ToString("yyyy-MM-dd");
+                string dataTo = datePickerExpenditureReceiptDateTo.DisplayDate.ToString("yyyy-MM-dd");
+                reports.GetReportDS(dataFrom, dataTo);
+            }
+            else
+            {
+                MessageBox.Show("Выберете период");
+            }
+
         }
         /// <summary>
         /// Получение отчета о наиболее доходных товарах
@@ -623,6 +709,6 @@ namespace CourseApp
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
-        }     
+        }
     }
 }

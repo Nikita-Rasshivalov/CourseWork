@@ -73,6 +73,9 @@
     <Compile Include="AddProdWindow.xaml.cs">
       <DependentUpon>AddProdWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AddStockWindow.xaml.cs">
+      <DependentUpon>AddStockWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EAddProdWindow.xaml.cs">
       <DependentUpon>EAddProdWindow.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AddProdWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AddStockWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -161,7 +168,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

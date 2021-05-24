@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseApp"
         mc:Ignorable="d"
- Title="Детализация расходной накладной"  Height="365.758" Width="631.517" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+ Title="Детализация расходной накладной"  Height="365.758" Width="653.117" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Grid>
         <DataGrid x:Name="EInvoicePositionsGrid"  AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
             <DataGrid.Columns>

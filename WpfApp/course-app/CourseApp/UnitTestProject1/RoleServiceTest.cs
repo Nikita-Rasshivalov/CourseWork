@@ -10,7 +10,7 @@ namespace CourseAppTests
     public class RoleServiceTest
     {
         IService<Role> service = new RoleService();
-        static Role testCustomer = new Role() { RoleName = "TestName", RoleKey = "test" };
+        static Role testRole = new Role() { RoleName = "TestName", RoleKey = "test" };
 
         [TestMethod]
         public void AGetAllTest()
@@ -21,7 +21,7 @@ namespace CourseAppTests
         [TestMethod]
         public void EDeleteTest()
         {
-            Assert.AreEqual(true, service.Delete(testCustomer));
+            Assert.AreEqual(true, service.Delete(testRole));
         }
     }
 }

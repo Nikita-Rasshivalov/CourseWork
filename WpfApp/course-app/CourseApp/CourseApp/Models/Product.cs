@@ -9,6 +9,6 @@
        /// Получение полной цены
        /// </summary>
        /// <returns></returns>
-        public override double GetFullPrice() => ProductPrice;
+        public override string GetProduct() => ProductName;
     }
 }

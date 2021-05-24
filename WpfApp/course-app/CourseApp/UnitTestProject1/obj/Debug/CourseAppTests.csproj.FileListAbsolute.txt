@@ -83,3 +83,4 @@ C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\bin\Debug\Sy
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\obj\Debug\CourseAppTests.csproj.CopyComplete
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\UnitTestProject1\bin\Debug\UnitTestProject1.dll.config
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\UnitTestProject1\bin\Debug\UnitTestProject1.dll.config

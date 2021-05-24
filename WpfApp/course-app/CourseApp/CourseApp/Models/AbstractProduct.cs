@@ -21,6 +21,6 @@
         /// Получение полной цены
         /// </summary>
         /// <returns></returns>
-        public abstract double GetFullPrice();
+        public abstract string GetProduct();
     }
 }

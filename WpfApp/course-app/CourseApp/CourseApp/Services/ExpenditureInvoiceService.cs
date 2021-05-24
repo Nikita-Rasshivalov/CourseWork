@@ -1,6 +1,7 @@
 ﻿using CourseApp.Models;
 using CourseApp.Utility;
 using Npgsql;
+using System;
 using System.Collections.Generic;
 
 namespace CourseApp.Services
@@ -21,15 +22,16 @@ namespace CourseApp.Services
         {
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM expenditure_invoices WHERE expenditure_invoice_id=@id;", connection.GetConnection());
+                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM expenditure_invoices WHERE expenditure_invoice_id=@expenditure_invoice_id;", connection.GetConnection());
 
-                command.Parameters.AddWithValue("@id", entity.ExpenditureInvoiceId);
+                command.Parameters.AddWithValue("@expenditure_invoice_id", entity.ExpenditureInvoiceId);
 
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
             }
             catch (NpgsqlException ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
 

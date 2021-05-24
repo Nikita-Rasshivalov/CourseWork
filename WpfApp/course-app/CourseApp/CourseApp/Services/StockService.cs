@@ -1,7 +1,9 @@
 ﻿using CourseApp.Models;
 using CourseApp.Utility;
 using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace CourseApp.Services
 {
@@ -21,9 +23,9 @@ namespace CourseApp.Services
         {
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM stocks WHERE stock_id=@id;", connection.GetConnection());
+                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM stocks WHERE stock_id=@stock_id;", connection.GetConnection());
 
-                command.Parameters.AddWithValue("@id", entity.UserId);
+                command.Parameters.AddWithValue("@stock_id", entity.StockId);
 
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
@@ -55,7 +57,9 @@ namespace CourseApp.Services
                     {
                         StockId = reader.GetInt32(0),
                         StockName = reader.GetString(1),
-                        Markup = reader.GetDouble(3)
+                        Description = reader.GetString(2),
+                        Markup = reader.GetDouble(3),
+                        UserId = reader.GetInt32(4)
                     };
 
                     entities.Add(entity);
@@ -83,8 +87,8 @@ namespace CourseApp.Services
 
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM stocks WHERE stock_id=@id;", connection.GetConnection());
-                command.Parameters.AddWithValue("@id", id);
+                NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM stocks WHERE stock_id=@stock_id;", connection.GetConnection());
+                command.Parameters.AddWithValue("@stock_id", id);
 
                 NpgsqlDataReader reader = command.ExecuteReader();
 
@@ -95,7 +99,8 @@ namespace CourseApp.Services
                         StockId = reader.GetInt32(0),
                         StockName = reader.GetString(1),
                         Description = reader.GetString(2),
-                        Markup = reader.GetDouble(3)
+                        Markup = reader.GetDouble(3),
+                        UserId = reader.GetInt32(4)
                     };
                 }
 
@@ -118,21 +123,20 @@ namespace CourseApp.Services
         {
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("INSERT INTO stocks(stock_name, markup) VALUES(@name, @markup);", connection.GetConnection());
-
-                command.Parameters.AddWithValue("@name", entity.StockName);
-                //command.Parameters.AddWithValue("@description", entity.Description);
+                NpgsqlCommand command = new NpgsqlCommand("insert into stocks (stock_name,description,markup,user_id)" +
+                    "VALUES(@stock_name, @description,@markup,@user_id);", connection.GetConnection());
+                command.Parameters.AddWithValue("@stock_name", entity.StockName);
+                command.Parameters.AddWithValue("@description", entity.Description);
                 command.Parameters.AddWithValue("@markup", entity.Markup);
-                //command.Parameters.AddWithValue("@user_id", entity.UserId);
-
+                command.Parameters.AddWithValue("@user_id", entity.UserId);
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
             }
             catch (NpgsqlException ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
-
             return true;
         }
 
@@ -145,19 +149,17 @@ namespace CourseApp.Services
         {
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("UPDATE stocks SET stock_name=@name, description=@description, markup=@markup, user_id=@user_id WHERE stock_id=@id;", connection.GetConnection());
-
-                command.Parameters.AddWithValue("@id", entity.StockId);
-                command.Parameters.AddWithValue("@name", entity.StockName);
-                command.Parameters.AddWithValue("@description", entity.Description);
+                NpgsqlCommand command = new NpgsqlCommand("UPDATE stocks SET user_id=@user_id, " +
+                    "markup=@markup WHERE stock_id=@stock_id;", connection.GetConnection());
+                command.Parameters.AddWithValue("@stock_id", entity.StockId);
                 command.Parameters.AddWithValue("@markup", entity.Markup);
                 command.Parameters.AddWithValue("@user_id", entity.UserId);
-
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
             }
             catch (NpgsqlException ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
 

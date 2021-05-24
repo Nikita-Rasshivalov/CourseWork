@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseApp"
         mc:Ignorable="d"
-         Title="Добавление продуктов"  Height="196.8" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+         Title="Добавление продуктов"  Height="196.8" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Closing="Window_Closing">
     <Grid Background="#FFF0F0F0">
         <ComboBox x:Name="ProductComboBox" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content=" Выберите продукт" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" Width="120"/>
         <Label Content="Введите количество" HorizontalAlignment="Left" Margin="156,50,0,0" VerticalAlignment="Top" Width="132"/>
-        <TextBox x:Name="CountBox" HorizontalAlignment="Left" Height="23" Margin="156,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="CountBox" HorizontalAlignment="Left" Height="23" Margin="156,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="CountBox_PreviewTextInput"/>
         <Button x:Name="AddProdBtn" Content="Добавить" HorizontalAlignment="Left" Margin="295,81,0,0" VerticalAlignment="Top" Width="89" Height="23" Click="AddProdBtn_Click"/>
 
     </Grid>

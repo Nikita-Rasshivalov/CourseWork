@@ -10,7 +10,7 @@ namespace CourseAppTests
     public class UserServiceTest
     {
         IService<User> service = new UserService();
-        static User testCustomer = new User()
+        static User testUser = new User()
         {
             RoleKey = "admin",
             UserName = "TestCustomerDescription",
@@ -27,21 +27,21 @@ namespace CourseAppTests
         [TestMethod]
         public void BInsertTest()
         {
-            Assert.AreEqual(true, service.Insert(testCustomer));
+            Assert.AreEqual(true, service.Insert(testUser));
         }
 
         [TestMethod]
         public void CUpdateTest()
         {
             var updateItem = service.GetAll()
-                                    .FirstOrDefault(c => c.UserName == testCustomer.UserName && c.UserPass == testCustomer.UserPass);
+                                    .FirstOrDefault(c => c.UserName == testUser.UserName && c.UserPass == testUser.UserPass);
 
             updateItem.UserName = "NewTestName";
 
             Assert.AreEqual(true, service.Update(updateItem));
 
-            testCustomer.UserId = updateItem.UserId;
-            updateItem.UserName = testCustomer.UserName;
+            testUser.UserId = updateItem.UserId;
+            updateItem.UserName = testUser.UserName;
 
             service.Update(updateItem);
         }
@@ -49,17 +49,17 @@ namespace CourseAppTests
         [TestMethod]
         public void DGetByIdTest()
         {
-            var findItem = service.GetById(testCustomer.UserId);
+            var findItem = service.GetById(testUser.UserId);
 
-            Assert.AreEqual(findItem.UserName, testCustomer.UserName);
-            Assert.AreEqual(findItem.UserId, testCustomer.UserId);
-            Assert.AreEqual(findItem.UserPass, testCustomer.UserPass);
+            Assert.AreEqual(findItem.UserName, testUser.UserName);
+            Assert.AreEqual(findItem.UserId, testUser.UserId);
+            Assert.AreEqual(findItem.UserPass, testUser.UserPass);
         }
 
         [TestMethod]
         public void EDeleteTest()
         {
-            Assert.AreEqual(true, service.Delete(testCustomer));
+            Assert.AreEqual(true, service.Delete(testUser));
         }
     }
 }

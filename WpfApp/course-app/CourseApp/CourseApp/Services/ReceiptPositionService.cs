@@ -152,8 +152,8 @@ namespace CourseApp.Services
             {
                 NpgsqlCommand command = new NpgsqlCommand("UPDATE receipt_positions " +
                                                           "SET count_product=@count_product " +
-                                                          "WHERE position_id=@id;", connection.GetConnection());
-                command.Parameters.AddWithValue("@id", entity.PositionId);
+                                                          "WHERE product_id=@product_id;", connection.GetConnection());
+                command.Parameters.AddWithValue("@product_id", entity.ProductId);
                 command.Parameters.AddWithValue("@count_product", entity.CountProduct);
 
                 command.ExecuteNonQuery();

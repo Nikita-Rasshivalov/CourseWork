@@ -2,8 +2,6 @@
 using CourseApp.Utility;
 using Npgsql;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Windows;
 
 namespace CourseApp.Services
 {

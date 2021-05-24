@@ -1,5 +1,6 @@
 ﻿using CourseApp.Models;
 using CourseApp.Services;
+using System;
 using System.Linq;
 using System.Windows;
 
@@ -35,41 +36,100 @@ namespace CourseApp
         /// <param name="e"></param>
         private void AddProdBtn_Click(object sender, RoutedEventArgs e)
         {
-            int receiptInvoiceId = _receiptInvoiceService.GetAll().Select(p => p.ReceiptInvoiceId).Last();
-
-            int productId = _productService.GetAll()
-                                               .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
-                                               .EntityId;
-            _receiptPositionService.Insert(new ReceiptPosition
+            if (ProductComboBox.SelectedItem != null && CountBox.Text != "")
             {
-                CountProduct = double.Parse(CountBox.Text),
-                ProductId = productId,
-                ReceiptInvoiceId = receiptInvoiceId
+                int receiptInvoiceId = _receiptInvoiceService.GetAll().Select(p => p.ReceiptInvoiceId).Last();
 
-            });
-
-            if (_productInStockSevice.GetAll().Where(o => o.StockId == StckId && o.ProductId == productId).Count() == 0)
-            {
-                _productInStockSevice.Insert(new ProductInStock
+                int productId = _productService.GetAll()
+                                                   .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
+                                                   .EntityId;
+                if (_receiptPositionService.GetAll()
+                    .Where(o => o.ProductId == productId && o.ReceiptInvoiceId.Equals(receiptInvoiceId)).Count() == 0)
                 {
-                    ProductId = productId,
-                    CountProduct = double.Parse(CountBox.Text),
-                    StockId = StckId
-                });
+                    _receiptPositionService.Insert(new ReceiptPosition
+                    {
+                        CountProduct = double.Parse(CountBox.Text),
+                        ProductId = productId,
+                        ReceiptInvoiceId = receiptInvoiceId
+
+                    });
+                }
+                else
+                {
+                    double countInPosition = _receiptPositionService.GetAll()
+                        .Where(o => o.ProductId == productId && o.ReceiptInvoiceId.Equals(receiptInvoiceId))
+                        .Select(o => o.CountProduct)
+                        .FirstOrDefault();
+                    _receiptPositionService.Update(new ReceiptPosition
+                    {
+                        CountProduct = double.Parse(CountBox.Text) + countInPosition,
+                        ProductId = productId
+                    });
+                }
+                if (_productInStockSevice.GetAll().Where(o => o.StockId == StckId && o.ProductId == productId).Count() == 0)
+                {
+                    _productInStockSevice.Insert(new ProductInStock
+                    {
+                        ProductId = productId,
+                        CountProduct = double.Parse(CountBox.Text),
+                        StockId = StckId
+                    });
+                }
+                else
+                {
+                    var id = _productInStockSevice.GetAll()
+                        .SingleOrDefault(o => o.StockId.Equals(StckId) && o.ProductId.Equals(productId)).Id;
+                    double countProductsInStock = _productInStockSevice.GetAll()
+                        .Where(o => o.StockId == StckId && o.ProductId == productId)
+                        .Select(o => o.CountProduct)
+                        .FirstOrDefault();
+                    _productInStockSevice.Update(new ProductInStock
+                    {
+                        Id = id,
+                        CountProduct = double.Parse(CountBox.Text) + countProductsInStock
+                    });
+                }
+                CountBox.Text = "";
+                ProductComboBox.SelectedIndex = 0;
             }
             else
             {
-                var id = _productInStockSevice.GetAll().SingleOrDefault(o => o.StockId.Equals(StckId) && o.ProductId.Equals(productId)).Id;
-                double countProductsInStock = _productInStockSevice.GetAll().Where(o => o.StockId == StckId && o.ProductId == productId).Select(o => o.CountProduct).FirstOrDefault();
-                _productInStockSevice.Update(new ProductInStock
+                MessageBox.Show("Заполните данные");
+            }
+        }
+        /// <summary>
+        /// Ввод только целых чисел в CountBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CountBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
+            {
+                e.Handled = true;
+            }
+        }
+        /// <summary>
+        /// Удаление пустой накладной
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            int receiptInvoiceId = _receiptInvoiceService.GetAll()
+                .Select(p => p.ReceiptInvoiceId)
+                .Last();
+            if (_receiptPositionService.GetAll()
+                .Where(o => o.ReceiptInvoiceId.Equals(receiptInvoiceId)).
+                Select(o => o.ReceiptInvoiceId)
+                .Count() == 0)
+            {
+
+                _receiptInvoiceService.Delete(new ReceiptInvoice
                 {
-                    Id = id,
-                    CountProduct = double.Parse(CountBox.Text) + countProductsInStock
+                    ReceiptInvoiceId = receiptInvoiceId
                 });
             }
-
-            CountBox.Text = "";
-            ProductComboBox.SelectedIndex = 0;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace CourseAppTests
     {
         IService<ExpenditureInvoice> service = new ExpenditureInvoiceService();
 
-        static ExpenditureInvoice testCustomer = new ExpenditureInvoice()
+        static ExpenditureInvoice testExpend = new ExpenditureInvoice()
         {
             ExpenditureInvoiceDate = (NpgsqlDate)DateTime.Now,
             CustomerId = 1,
@@ -29,7 +29,7 @@ namespace CourseAppTests
         [TestMethod]
         public void EDeleteTest()
         {
-            Assert.AreEqual(true, service.Delete(testCustomer));
+            Assert.AreEqual(true, service.Delete(testExpend));
         }
     }
 }

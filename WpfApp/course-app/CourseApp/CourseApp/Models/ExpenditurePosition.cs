@@ -32,7 +32,6 @@
         /// <summary>
         /// Полная цена
         /// </summary>
-
         public double FullPrice { get; set; }
     }
 }

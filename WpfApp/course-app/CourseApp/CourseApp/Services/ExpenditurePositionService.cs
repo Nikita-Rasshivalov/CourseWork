@@ -19,7 +19,8 @@ namespace CourseApp.Services
         {
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM expenditure_positions WHERE expenditure_position_id=@id;", connection.GetConnection());
+                NpgsqlCommand command = new NpgsqlCommand("DELETE FROM expenditure_positions " +
+                    "WHERE expenditure_position_id=@id;", connection.GetConnection());
 
                 command.Parameters.AddWithValue("@id", entity.ExpenditurePositionId);
 
@@ -44,7 +45,8 @@ namespace CourseApp.Services
             {
                 List<ExpenditurePosition> entities = new List<ExpenditurePosition>();
 
-                NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM expenditure_positions ORDER BY expenditure_position_id", connection.GetConnection());
+                NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM expenditure_positions " +
+                    "ORDER BY expenditure_position_id", connection.GetConnection());
                 NpgsqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
@@ -84,7 +86,8 @@ namespace CourseApp.Services
 
             try
             {
-                NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM expenditure_positions WHERE expenditure_position_id=@id;", connection.GetConnection());
+                NpgsqlCommand command = new NpgsqlCommand("SELECT * FROM expenditure_positions " +
+                    "WHERE expenditure_position_id=@id;", connection.GetConnection());
                 command.Parameters.AddWithValue("@id", id);
 
                 NpgsqlDataReader reader = command.ExecuteReader();
@@ -121,7 +124,8 @@ namespace CourseApp.Services
             try
             {
                 NpgsqlCommand command = new NpgsqlCommand("INSERT INTO expenditure_positions " +
-                                                          "( product_id, count_product,expenditure_invoice_id,product_price) VALUES (@product_id, @count_product,@expenditure_invoice_id,@product_price);"
+                                                          "( product_id, count_product,expenditure_invoice_id,product_price) " +
+                                                          "VALUES (@product_id, @count_product,@expenditure_invoice_id,@product_price);"
                                                           , connection.GetConnection());
 
                 command.Parameters.AddWithValue("@product_id", entity.ProductId);
@@ -150,15 +154,10 @@ namespace CourseApp.Services
             try
             {
                 NpgsqlCommand command = new NpgsqlCommand("UPDATE expenditure_positions " +
-                                                          "SET product_id=@product_id, " +
-                                                          "count_product=@count_product, " +
-                                                          "expenditure_invoice_id=@expenditure_invoice_id " +
-                                                          "product_price=@product_price " +
-                                                          "WHERE expenditure_position_id=@id;", connection.GetConnection());
+                                                          "SET count_product=@count_product " +
+                                                          "WHERE product_id=@product_id", connection.GetConnection());
                 command.Parameters.AddWithValue("@product_id", entity.ProductId);
                 command.Parameters.AddWithValue("@count_product", entity.CountProduct);
-                command.Parameters.AddWithValue("@expenditure_invoice_id", entity.ExpenditureInvoiceId);
-                command.Parameters.AddWithValue("@product_price", entity.ProductPrice);
                 command.ExecuteNonQuery();
                 connection.CloseConnection();
             }

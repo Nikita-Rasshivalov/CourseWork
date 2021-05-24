@@ -23,16 +23,21 @@ namespace CourseApp
         public InvoiceDetalisationWindow(ReceiptInvoice stockItem)
         {
             InitializeComponent();
-            List<ReceiptPosition> positions = _receiptPositionService.GetAll()?.Where(o => o.ReceiptInvoiceId == stockItem.ReceiptInvoiceId).ToList() ?? new List<ReceiptPosition>();
-            
-            foreach (var item in positions)
+            if (stockItem != null)
             {
-                item.Product = _productService.GetById((int)item.ProductId);
-                var id = _productService.GetAll().SingleOrDefault(o => o.EntityId.Equals(item.ProductId));
-                item.FullPrice = id.ProductPrice * item.CountProduct;
+                List<ReceiptPosition> positions = _receiptPositionService.GetAll()?.Where(o => o.ReceiptInvoiceId == stockItem.ReceiptInvoiceId).ToList() ?? new List<ReceiptPosition>();
+
+                foreach (var item in positions)
+                {
+                    item.Product = _productService.GetById((int)item.ProductId);
+                    var id = _productService.GetAll().SingleOrDefault(o => o.EntityId.Equals(item.ProductId));
+                    item.FullPrice = id.ProductPrice * item.CountProduct;
+                }
+                InvoicePositionsGrid.ItemsSource = positions;
+                InvoicePositionsGrid.IsReadOnly = true;
             }
-            InvoicePositionsGrid.ItemsSource = positions;
-            InvoicePositionsGrid.IsReadOnly = true;
+            
+            
 
         }
     }

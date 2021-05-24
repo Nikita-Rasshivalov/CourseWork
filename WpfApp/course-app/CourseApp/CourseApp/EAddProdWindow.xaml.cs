@@ -41,44 +41,97 @@ namespace CourseApp
         /// <param name="e"></param>
         private void AddProdBtn_Click(object sender, RoutedEventArgs e)
         {
-            double productPrice = _productService.GetAll()
-                                               .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
-                                               .ProductPrice;
-            int expenditureInvoiceId = _expenditureInvoiceService.GetAll().Select(p => p.ExpenditureInvoiceId).Last();
-
-
-            int productId = _productService.GetAll()
-                                               .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
-                                               .EntityId;
-
-            double countProductsInStock = _productInStockSevice.GetAll().Where(o => o.StockId == StockId && o.ProductId == productId).Select(o => o.CountProduct).FirstOrDefault();
-            
-
-            if (countProductsInStock < double.Parse(CountBox.Text))
+            if (ProductComboBox.SelectedItem != null && CountBox.Text != "")
             {
-                MessageBox.Show($"Недостаточно товара в количестве {double.Parse(CountBox.Text) - countProductsInStock}");
+
+                double productPrice = _productService.GetAll()
+                                                   .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
+                                                   .ProductPrice;
+                int expenditureInvoiceId = _expenditureInvoiceService.GetAll()
+                    .Select(p => p.ExpenditureInvoiceId)
+                    .Last();
+
+
+                int productId = _productService.GetAll()
+                                                   .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
+                                                   .EntityId;
+
+                double countProductsInStock = _productInStockSevice.GetAll()
+                    .Where(o => o.StockId == StockId && o.ProductId == productId)
+                    .Select(o => o.CountProduct)
+                    .FirstOrDefault();
+
+
+                if (countProductsInStock < double.Parse(CountBox.Text))
+                {
+                    MessageBox.Show($"Недостаточно товара в количестве {double.Parse(CountBox.Text) - countProductsInStock}");
+                }
+                else
+                {
+
+                    if (_expenditurePositionService.GetAll()
+                   .Where(o => o.ProductId == productId && o.ExpenditureInvoiceId.Equals(expenditureInvoiceId)).Count() == 0)
+                    {
+                        _expenditurePositionService.Insert(new ExpenditurePosition
+                        {
+                            CountProduct = double.Parse(CountBox.Text),
+                            ProductId = productId,
+                            ExpenditureInvoiceId = expenditureInvoiceId,
+                            ProductPrice = (Math.Round(productPrice + productPrice * (Markup / 100.0), 3))
+
+                        });
+                    }
+                    else
+                    {
+                        double countInPosition = _expenditurePositionService.GetAll()
+                            .Where(o => o.ProductId == productId && o.ExpenditureInvoiceId.Equals(expenditureInvoiceId))
+                            .Select(o => o.CountProduct)
+                            .FirstOrDefault();
+                        _expenditurePositionService.Update(new ExpenditurePosition
+                        {
+                            CountProduct = double.Parse(CountBox.Text) + countInPosition,
+                            ProductId = productId
+                        });
+                    }
+
+                    var id = _productInStockSevice.GetAll()
+                        .SingleOrDefault(o => o.StockId.Equals(StockId) && o.ProductId.Equals(productId)).Id;
+                    _productInStockSevice.Update(new ProductInStock
+                    {
+                        Id = id,
+                        CountProduct = countProductsInStock - double.Parse(CountBox.Text)
+                    });
+                }
+                CountBox.Text = "";
+                ProductComboBox.SelectedIndex = 0;
             }
-            else
+        }
+
+        private void CountBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            if (!Char.IsDigit(e.Text, 0))
             {
-                _expenditurePositionService.Insert(new ExpenditurePosition
-                {
-                    CountProduct = double.Parse(CountBox.Text),
-                    ProductId = productId,
-                    ExpenditureInvoiceId = expenditureInvoiceId,
-                    ProductPrice = (Math.Round(productPrice + productPrice * (Markup / 100.0), 3))
+                e.Handled = true;
+            }
+        }
 
-                });
-
-                var id = _productInStockSevice.GetAll().SingleOrDefault(o => o.StockId.Equals(StockId) && o.ProductId.Equals(productId)).Id;
- 
-                _productInStockSevice.Update(new ProductInStock
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            int expenditureInvoiceId = _expenditureInvoiceService.GetAll()
+             .Select(p => p.ExpenditureInvoiceId)
+             .Last();
+            if (_expenditurePositionService.GetAll()
+                .Where(o => o.ExpenditureInvoiceId.Equals(expenditureInvoiceId)).
+                Select(o => o.ExpenditureInvoiceId)
+                .Count() == 0)
+            {
+           
+                _expenditureInvoiceService.Delete(new ExpenditureInvoice
                 {
-                    Id = id,
-                    CountProduct = countProductsInStock - double.Parse(CountBox.Text)
+                    ExpenditureInvoiceId = expenditureInvoiceId
                 });
             }
-            CountBox.Text = "";
-            ProductComboBox.SelectedIndex = 0;
+        
         }
     }
 }

@@ -30,6 +30,5 @@
         /// Склад
         /// </summary>
         public Stock Stock { get; set; }
-
     }
 }

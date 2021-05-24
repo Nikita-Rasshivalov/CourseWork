@@ -175,3 +175,13 @@ C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EInvoiceD
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EAddProdWindow.g.cs
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EAddProdWindow.baml
 C:\Users\nikit\Desktop\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\CourseApp.csprojAssemblyReference.cache
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\AddProdWindow.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EAddProdWindow.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EInvoiceDetalisationWindow.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\InvoiceDetalisationWindow.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\AddProdWindow.baml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EAddProdWindow.baml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\EInvoiceDetalisationWindow.baml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\InvoiceDetalisationWindow.baml
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\AddStockWindow.g.cs
+C:\Users\nikit\Desktop\Курсовая работа ооп\WpfApp\course-app\CourseApp\CourseApp\obj\Debug\AddStockWindow.baml

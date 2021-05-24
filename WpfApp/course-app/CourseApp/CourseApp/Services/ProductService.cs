@@ -4,6 +4,7 @@ using CourseApp.Models;
 using Npgsql;
 using System.Windows;
 using System.Diagnostics;
+using System;
 
 namespace CourseApp.Services
 {
@@ -56,7 +57,7 @@ namespace CourseApp.Services
                     {
                         EntityId = reader.GetInt32(0),
                         ProductName = reader.GetString(1),
-                        ProductPrice = reader.GetDouble(2)
+                        ProductPrice = Math.Round(reader.GetDouble(2),2)
                     };
 
                     entities.Add(entity);

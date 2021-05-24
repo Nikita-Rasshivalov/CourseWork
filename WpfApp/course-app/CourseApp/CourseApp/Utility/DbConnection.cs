@@ -11,7 +11,7 @@ namespace CourseApp.Utility
     {
         private readonly NpgsqlConnection connection = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MyDatabase"].ConnectionString);
         /// <summary>
-        /// Полученик соединения.
+        /// Получение соединения.
         /// </summary>
         /// <returns></returns>
         public NpgsqlConnection GetConnection()
