@@ -106,13 +106,16 @@
             </TabItem>
             <TabItem x:Name="ProductInStock" Header="Товары на складе" MouseEnter="ProductInStock_MouseEnter">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="prodInStockGrid" HorizontalAlignment="Left" Height="369" Margin="10,10,0,0" VerticalAlignment="Top" Width="853" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False"  Grid.ColumnSpan="2">
+                    <DataGrid x:Name="prodInStockGrid" HorizontalAlignment="Left" Height="369" Margin="10,10,0,0" VerticalAlignment="Top" Width="389" AutoGenerateColumns="False" CanUserDeleteRows="False" CanUserAddRows="False" CanUserResizeRows="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Продукт" Binding="{Binding Path=Product.ProductName}" IsReadOnly = "True" Width="120" />
                             <DataGridTextColumn Header="Количество" Binding="{Binding Path=CountProduct}" IsReadOnly = "True" Width="120" />
                             <DataGridTextColumn Header="Склад" Binding="{Binding Path=Stock.StockName}" IsReadOnly = "True" Width="120" />
                         </DataGrid.Columns>
                     </DataGrid>
+                    <Button x:Name="FindStocksBtn" Content="Поиск" HorizontalAlignment="Left" Margin="662,10,0,0" VerticalAlignment="Top" Width="101" Height="27" Click="FindStocksBtn_Click"/>
+                    <ComboBox x:Name="StocksBox" HorizontalAlignment="Left" Margin="509,10,0,0" VerticalAlignment="Top" Width="131" Height="27"/>
+                    <Label Content="Поиск" HorizontalAlignment="Left" Margin="436,10,0,0" VerticalAlignment="Top" Width="68" Height="27"/>
                 </Grid>
             </TabItem>
             <TabItem x:Name="idExpenditureInvoices" Header="Отходные накладные" MouseEnter="IdExpenditureInvoices_MouseEnter">

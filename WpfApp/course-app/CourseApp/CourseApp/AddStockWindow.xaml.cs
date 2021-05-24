@@ -84,22 +84,18 @@ namespace CourseApp
         /// <param name="e"></param>
         private void UpdStockBtn_Click(object sender, RoutedEventArgs e)
         {
-
-            if (selectedStock != null)
+            var userId = _userService.GetAll().FirstOrDefault(o => o.FullName.Equals(StokerComboBox.SelectedItem)).UserId;
+            if (selectedStock != null && StocksGrid.SelectedItem != null)
             {
                 selectedStock = (Stock)StocksGrid.SelectedItem;
-                selectedStock.StockName = NameBox.Text;
-                selectedStock.Description = DescrBox.Text;
                 selectedStock.Markup = double.Parse(MarkupBox.Text);
-
+                selectedStock.UserId = userId;
+                selectedStock.StockId = ((Stock)StocksGrid.SelectedItem).StockId;
                 _stockService.Update(selectedStock);
-
-                selectedStock = null;
-                
+                selectedStock = null;   
             }
             else
             {
-                var userId = _userService.GetAll().FirstOrDefault(o => o.FullName.Equals(StokerComboBox.SelectedItem)).UserId;
                 _stockService.Insert(new Stock
                 {
                     StockName = NameBox.Text,

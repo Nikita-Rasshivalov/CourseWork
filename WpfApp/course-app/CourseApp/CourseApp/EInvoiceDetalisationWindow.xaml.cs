@@ -23,7 +23,9 @@ namespace CourseApp
         public EInvoiceDetalisationWindow(ExpenditureInvoice stockItem)
         {
             InitializeComponent();
-            List<ExpenditurePosition> positions = _expenditurePositionService.GetAll()?.Where(o => o.ExpenditureInvoiceId == stockItem.ExpenditureInvoiceId).ToList() ?? new List<ExpenditurePosition>();
+            List<ExpenditurePosition> positions = _expenditurePositionService.GetAll()?
+                .Where(o => o.ExpenditureInvoiceId == stockItem.ExpenditureInvoiceId)
+                .ToList() ?? new List<ExpenditurePosition>();
             foreach (var item in positions)
             {
                 item.Product = _productService.GetById((int)item.ProductId);

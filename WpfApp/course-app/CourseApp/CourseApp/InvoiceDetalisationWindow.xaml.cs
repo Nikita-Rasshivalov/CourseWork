@@ -25,7 +25,9 @@ namespace CourseApp
             InitializeComponent();
             if (stockItem != null)
             {
-                List<ReceiptPosition> positions = _receiptPositionService.GetAll()?.Where(o => o.ReceiptInvoiceId == stockItem.ReceiptInvoiceId).ToList() ?? new List<ReceiptPosition>();
+                List<ReceiptPosition> positions = _receiptPositionService.GetAll()?.
+                    Where(o => o.ReceiptInvoiceId == stockItem.ReceiptInvoiceId).
+                    ToList() ?? new List<ReceiptPosition>();
 
                 foreach (var item in positions)
                 {

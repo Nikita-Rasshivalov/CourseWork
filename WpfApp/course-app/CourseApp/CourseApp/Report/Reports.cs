@@ -5,6 +5,7 @@ using System.Xml.Linq;
 using CourseApp.Utility;
 using System.Windows.Controls;
 using CourseApp.Reports;
+using NpgsqlTypes;
 
 namespace CourseApp.Report
 {
@@ -32,9 +33,10 @@ namespace CourseApp.Report
                 {
                     string query = "select stock_name, product_name,count_product,product_price from products_in_stock" +
                         " inner join stocks on products_in_stock.stock_id = stocks.stock_id " +
-                         "inner join products on products_in_stock.product_id = products.product_id  where products_in_stock.stock_id =" + stockId;
+                         "inner join products on products_in_stock.product_id = products.product_id  where products_in_stock.stock_id = @stock_Id;";
 
                     NpgsqlCommand command = new NpgsqlCommand(query, connection.GetConnection());
+                    command.Parameters.AddWithValue("stock_Id", stockId);
                     NpgsqlDataReader reader = command.ExecuteReader();
 
                     XDocument xdoc = new XDocument();
@@ -138,7 +140,7 @@ namespace CourseApp.Report
         /// </summary>
         /// <param name="dataFrom"></param>
         /// <param name="dataTo"></param>
-        public void GetReportDS(string dataFrom, string dataTo)
+        public void GetReportDS(NpgsqlDate dataFrom, NpgsqlDate dataTo)
         {
             DbConnection connection = new DbConnection();
             try
@@ -146,10 +148,12 @@ namespace CourseApp.Report
                 string query = "select stock_name, sum(product_price*count_product)  from expenditure_invoices" +
                     " inner join expenditure_positions on expenditure_invoices.expenditure_invoice_id = expenditure_positions.expenditure_invoice_id " +
                     "inner join stocks on stocks.stock_id = expenditure_invoices.stock_id" +
-                    " WHERE expenditure_invoice_date BETWEEN '" + dataFrom + "' AND '" + dataTo + "'" +
+                    " WHERE expenditure_invoice_date BETWEEN @datafrom AND @datato " +
                     " group by stock_name";
 
                 NpgsqlCommand command = new NpgsqlCommand(query, connection.GetConnection());
+                command.Parameters.AddWithValue("@datafrom",dataFrom);
+                command.Parameters.AddWithValue("@datato", dataTo);
                 NpgsqlDataReader reader = command.ExecuteReader();
 
                 XDocument xdoc = new XDocument();
@@ -181,7 +185,7 @@ namespace CourseApp.Report
             }
             catch (NpgsqlException ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
             finally
             {

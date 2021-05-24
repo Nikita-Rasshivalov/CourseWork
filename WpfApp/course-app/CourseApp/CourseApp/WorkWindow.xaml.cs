@@ -639,6 +639,24 @@ namespace CourseApp
                 item.Stock = _stockService.GetById((int)item.StockId);
             }
             prodInStockGrid.ItemsSource = prodInStock;
+            StocksBox.ItemsSource = _stockService.GetAll().Select(o => o.StockName);
+        }
+
+        /// <summary>
+        /// Поиск товаров по складам
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FindStocksBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var stockId = _stockService.GetAll().FirstOrDefault(o => o.StockName.Equals(StocksBox.SelectedItem)).StockId;
+            var prodInStock  = _productInStockSevice.GetAll().Where(o => o.StockId.Equals(stockId));
+            foreach (var item in prodInStock)
+            {
+                item.Product = _productService.GetById((int)item.ProductId);
+                item.Stock = _stockService.GetById((int)item.StockId);
+            }
+            prodInStockGrid.ItemsSource = prodInStock;
         }
 
 
@@ -679,8 +697,8 @@ namespace CourseApp
         {
             if (datePickerExpenditureReceiptDateFrom.SelectedDate != null && datePickerExpenditureReceiptDateTo.SelectedDate != null)
             {
-                string dataFrom = datePickerExpenditureReceiptDateFrom.DisplayDate.ToString("yyyy-MM-dd");
-                string dataTo = datePickerExpenditureReceiptDateTo.DisplayDate.ToString("yyyy-MM-dd");
+                NpgsqlDate dataFrom = (NpgsqlDate)datePickerExpenditureReceiptDateFrom.SelectedDate;
+                NpgsqlDate dataTo = (NpgsqlDate)datePickerExpenditureReceiptDateTo.SelectedDate;
                 reports.GetReportDS(dataFrom, dataTo);
             }
             else

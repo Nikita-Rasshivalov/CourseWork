@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using NpgsqlTypes;
+using System.Windows.Controls;
 
 namespace CourseApp.Reports
 {
@@ -22,7 +23,7 @@ namespace CourseApp.Reports
         /// </summary>
         /// <param name="dataFrom">дата с какой брать данные</param>
         /// <param name="dataTo">дата по какую брать данные</param>
-        void GetReportDS(string dataFrom, string dataTo);
+        void GetReportDS(NpgsqlDate dataFrom, NpgsqlDate dataTo);
         /// <summary>
         /// Получение доходных товаров
         /// </summary>
