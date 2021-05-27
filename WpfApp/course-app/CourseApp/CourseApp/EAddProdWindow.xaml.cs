@@ -47,53 +47,21 @@ namespace CourseApp
                 double productPrice = _productService.GetAll()
                                                    .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
                                                    .ProductPrice;
-                int expenditureInvoiceId = _expenditureInvoiceService.GetAll()
-                    .Select(p => p.ExpenditureInvoiceId)
-                    .Last();
-
-
+                int expenditureInvoiceId = _expenditureInvoiceService.GetAll().Select(p => p.ExpenditureInvoiceId).Last();
                 int productId = _productService.GetAll()
                                                    .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
                                                    .EntityId;
-
                 double countProductsInStock = _productInStockSevice.GetAll()
                     .Where(o => o.StockId == StockId && o.ProductId == productId)
                     .Select(o => o.CountProduct)
                     .FirstOrDefault();
-
-
                 if (countProductsInStock < double.Parse(CountBox.Text))
                 {
                     MessageBox.Show($"Недостаточно товара в количестве {double.Parse(CountBox.Text) - countProductsInStock}");
                 }
                 else
                 {
-
-                    if (_expenditurePositionService.GetAll()
-                   .Where(o => o.ProductId == productId && o.ExpenditureInvoiceId.Equals(expenditureInvoiceId)).Count() == 0)
-                    {
-                        _expenditurePositionService.Insert(new ExpenditurePosition
-                        {
-                            CountProduct = double.Parse(CountBox.Text),
-                            ProductId = productId,
-                            ExpenditureInvoiceId = expenditureInvoiceId,
-                            ProductPrice = (Math.Round(productPrice + productPrice * (Markup / 100.0), 3))
-
-                        });
-                    }
-                    else
-                    {
-                        double countInPosition = _expenditurePositionService.GetAll()
-                            .Where(o => o.ProductId == productId && o.ExpenditureInvoiceId.Equals(expenditureInvoiceId))
-                            .Select(o => o.CountProduct)
-                            .FirstOrDefault();
-                        _expenditurePositionService.Update(new ExpenditurePosition
-                        {
-                            CountProduct = double.Parse(CountBox.Text) + countInPosition,
-                            ProductId = productId
-                        });
-                    }
-
+                    InsertExpenditurePos(productId, expenditureInvoiceId, productPrice);
                     var id = _productInStockSevice.GetAll()
                         .SingleOrDefault(o => o.StockId.Equals(StockId) && o.ProductId.Equals(productId)).Id;
                     _productInStockSevice.Update(new ProductInStock
@@ -106,7 +74,44 @@ namespace CourseApp
                 ProductComboBox.SelectedIndex = 0;
             }
         }
+       /// <summary>
+       /// Добавление товаров в позиции накладной
+       /// </summary>
+       /// <param name="productId">Id продукта</param>
+       /// <param name="expenditureInvoiceId">Id накладной</param>
+       /// <param name="productPrice"> цена продукта</param>
+        private void InsertExpenditurePos(int productId, int expenditureInvoiceId, double productPrice)
+        {
+            if (_expenditurePositionService.GetAll()
+                   .Where(o => o.ProductId == productId && o.ExpenditureInvoiceId.Equals(expenditureInvoiceId)).Count() == 0)
+            {
+                _expenditurePositionService.Insert(new ExpenditurePosition
+                {
+                    CountProduct = double.Parse(CountBox.Text),
+                    ProductId = productId,
+                    ExpenditureInvoiceId = expenditureInvoiceId,
+                    ProductPrice = (Math.Round(productPrice + productPrice * (Markup / 100.0), 3))
 
+                });
+            }
+            else
+            {
+                double countInPosition = _expenditurePositionService.GetAll()
+                    .Where(o => o.ProductId == productId && o.ExpenditureInvoiceId.Equals(expenditureInvoiceId))
+                    .Select(o => o.CountProduct)
+                    .FirstOrDefault();
+                _expenditurePositionService.Update(new ExpenditurePosition
+                {
+                    CountProduct = double.Parse(CountBox.Text) + countInPosition,
+                    ProductId = productId
+                });
+            }
+        }
+        /// <summary>
+        /// Проверка на число 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CountBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             if (!Char.IsDigit(e.Text, 0))

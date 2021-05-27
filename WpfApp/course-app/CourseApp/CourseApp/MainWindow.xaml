@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CourseApp"
         mc:Ignorable="d"
-        Title="Autorisation" Height="239.6" Width="299.2" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="#FFE5E5E5">
+        Title="Авторизация" Height="239.6" Width="299.2" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Background="#FFE5E5E5">
     <Grid>
         <Label x:Name="labelLogin" Content="Логин" HorizontalAlignment="Left" Margin="28,16,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Height="31" Width="66"/>
         <Label x:Name="labelPass" Content="Пароль" HorizontalAlignment="Left" Margin="28,83,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Height="32" Width="78"/>

@@ -1,5 +1,6 @@
 ﻿using CourseApp.Models;
 using CourseApp.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -34,6 +35,7 @@ namespace CourseApp
                     item.Product = _productService.GetById((int)item.ProductId);
                     var id = _productService.GetAll().SingleOrDefault(o => o.EntityId.Equals(item.ProductId));
                     item.FullPrice = id.ProductPrice * item.CountProduct;
+                    item.Product.ProductPrice = Math.Round( item.Product.ProductPrice,3);
                 }
                 InvoicePositionsGrid.ItemsSource = positions;
                 InvoicePositionsGrid.IsReadOnly = true;

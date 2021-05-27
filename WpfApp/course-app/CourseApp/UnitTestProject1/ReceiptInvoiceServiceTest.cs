@@ -1,27 +1,39 @@
-﻿using System;
-using System.Linq;
-using CourseApp.Models;
+﻿using CourseApp.Models;
 using CourseApp.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NpgsqlTypes;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CourseAppTests
 {
     [TestClass]
-    public class RoleServiceTest
+    public class ReceiptInvoiceServiceTest
     {
-        IService<Role> service = new RoleService();
-        static Role testRole = new Role() { RoleName = "TestName", RoleKey = "test" };
 
-        [TestMethod]
-        public void AGetAllTest()
+        IService<ReceiptInvoice> service = new ReceiptInvoiceService();
+
+        static ReceiptInvoice testReceipt = new ReceiptInvoice()
         {
-            Assert.AreEqual(true, service.GetAll().Count > 0);
-        }
+            CustomerId = 1,
+            StockId = 2
+
+        };
+
         [TestMethod]
         public void BGetAllTest()
         {
             Assert.AreEqual(true, service.GetAll().Count > 0);
         }
+        [TestMethod]
+        public void EGetAllTest()
+        {
+            Assert.AreEqual(true, service.GetAll().Count > 0);
+        }
+
         [TestMethod]
         public void CGetAllTest()
         {
@@ -32,11 +44,10 @@ namespace CourseAppTests
         {
             Assert.AreEqual(true, service.GetAll().Count > 0);
         }
-
         [TestMethod]
         public void EDeleteTest()
         {
-            Assert.AreEqual(true, service.Delete(testRole));
+            Assert.AreEqual(true, service.Delete(testReceipt));
         }
     }
 }

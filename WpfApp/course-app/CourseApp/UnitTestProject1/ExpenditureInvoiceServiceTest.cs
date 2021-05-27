@@ -24,8 +24,22 @@ namespace CourseAppTests
         {
             Assert.AreEqual(true, service.GetAll().Count > 0);
         }
+        [TestMethod]
+        public void EGetAllTest()
+        {
+            Assert.AreEqual(true, service.GetAll().Count > 0);
+        }
 
-
+        [TestMethod]
+        public void CGetAllTest()
+        {
+            Assert.AreEqual(true, service.GetAll().Count > 0);
+        }
+        [TestMethod]
+        public void DGetAllTest()
+        {
+            Assert.AreEqual(true, service.GetAll().Count > 0);
+        }
         [TestMethod]
         public void EDeleteTest()
         {

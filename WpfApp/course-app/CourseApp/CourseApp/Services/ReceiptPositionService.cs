@@ -31,6 +31,7 @@ namespace CourseApp.Services
             }
             catch (NpgsqlException ex)
             {
+                Debug.WriteLine(ex.Message);
                 return false;
             }
 
@@ -134,6 +135,7 @@ namespace CourseApp.Services
             }
             catch (NpgsqlException ex)
             {
+                Debug.WriteLine(ex.Message);
                 return false;
             
             }

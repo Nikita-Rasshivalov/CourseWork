@@ -43,58 +43,64 @@ namespace CourseApp
                 int productId = _productService.GetAll()
                                                    .SingleOrDefault(p => p.ProductName.Equals(ProductComboBox.SelectedItem.ToString()))
                                                    .EntityId;
-                if (_receiptPositionService.GetAll()
-                    .Where(o => o.ProductId == productId && o.ReceiptInvoiceId.Equals(receiptInvoiceId)).Count() == 0)
-                {
-                    _receiptPositionService.Insert(new ReceiptPosition
-                    {
-                        CountProduct = double.Parse(CountBox.Text),
-                        ProductId = productId,
-                        ReceiptInvoiceId = receiptInvoiceId
-
-                    });
-                }
-                else
-                {
-                    double countInPosition = _receiptPositionService.GetAll()
-                        .Where(o => o.ProductId == productId && o.ReceiptInvoiceId.Equals(receiptInvoiceId))
-                        .Select(o => o.CountProduct)
-                        .FirstOrDefault();
-                    _receiptPositionService.Update(new ReceiptPosition
-                    {
-                        CountProduct = double.Parse(CountBox.Text) + countInPosition,
-                        ProductId = productId
-                    });
-                }
-                if (_productInStockSevice.GetAll().Where(o => o.StockId == StckId && o.ProductId == productId).Count() == 0)
-                {
-                    _productInStockSevice.Insert(new ProductInStock
-                    {
-                        ProductId = productId,
-                        CountProduct = double.Parse(CountBox.Text),
-                        StockId = StckId
-                    });
-                }
-                else
-                {
-                    var id = _productInStockSevice.GetAll()
-                        .SingleOrDefault(o => o.StockId.Equals(StckId) && o.ProductId.Equals(productId)).Id;
-                    double countProductsInStock = _productInStockSevice.GetAll()
-                        .Where(o => o.StockId == StckId && o.ProductId == productId)
-                        .Select(o => o.CountProduct)
-                        .FirstOrDefault();
-                    _productInStockSevice.Update(new ProductInStock
-                    {
-                        Id = id,
-                        CountProduct = double.Parse(CountBox.Text) + countProductsInStock
-                    });
-                }
+                CreateResPos(productId, receiptInvoiceId);
                 CountBox.Text = "";
                 ProductComboBox.SelectedIndex = 0;
             }
             else
             {
                 MessageBox.Show("Заполните данные");
+            }
+        }
+        /// <summary>
+        /// Добавление продуктов в позиции накладной
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="receiptInvoiceId"></param>
+        private void CreateResPos(int productId, int receiptInvoiceId)
+        {
+            if (_receiptPositionService.GetAll()
+                    .Where(o => o.ProductId == productId && o.ReceiptInvoiceId.Equals(receiptInvoiceId)).Count() == 0)
+            {
+                _receiptPositionService.Insert(new ReceiptPosition
+                {
+                    CountProduct = double.Parse(CountBox.Text),
+                    ProductId = productId,
+                    ReceiptInvoiceId = receiptInvoiceId
+
+                });
+            }
+            else
+            {
+                double countInPosition = _receiptPositionService.GetAll()
+                    .Where(o => o.ProductId == productId && o.ReceiptInvoiceId.Equals(receiptInvoiceId))
+                    .Select(o => o.CountProduct).FirstOrDefault();
+                _receiptPositionService.Update(new ReceiptPosition
+                {
+                    CountProduct = double.Parse(CountBox.Text) + countInPosition,
+                    ProductId = productId
+                });
+            }
+            if (_productInStockSevice.GetAll().Where(o => o.StockId == StckId && o.ProductId == productId).Count() == 0)
+            {
+                _productInStockSevice.Insert(new ProductInStock
+                {
+                    ProductId = productId,
+                    CountProduct = double.Parse(CountBox.Text),
+                    StockId = StckId
+                });
+            }
+            else
+            {
+                var id = _productInStockSevice.GetAll()
+                    .SingleOrDefault(o => o.StockId.Equals(StckId) && o.ProductId.Equals(productId)).Id;
+                double countProductsInStock = _productInStockSevice.GetAll()
+                    .Where(o => o.StockId == StckId && o.ProductId == productId).Select(o => o.CountProduct).FirstOrDefault();
+                _productInStockSevice.Update(new ProductInStock
+                {
+                    Id = id,
+                    CountProduct = double.Parse(CountBox.Text) + countProductsInStock
+                });
             }
         }
         /// <summary>

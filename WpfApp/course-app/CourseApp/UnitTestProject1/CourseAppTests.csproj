@@ -54,6 +54,7 @@
     <Compile Include="ExpenditureInvoiceServiceTest.cs" />
     <Compile Include="ProductServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiptInvoiceServiceTest.cs" />
     <Compile Include="RoleServiceTest.cs" />
     <Compile Include="StockServiceTest.cs" />
     <Compile Include="UserServiceTest.cs" />

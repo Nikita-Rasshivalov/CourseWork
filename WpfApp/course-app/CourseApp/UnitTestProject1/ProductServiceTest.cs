@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using CourseApp.Models;
 using CourseApp.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

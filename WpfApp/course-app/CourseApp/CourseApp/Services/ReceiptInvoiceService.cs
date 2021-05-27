@@ -2,6 +2,7 @@
 using CourseApp.Utility;
 using Npgsql;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace CourseApp.Services
 {
@@ -30,6 +31,7 @@ namespace CourseApp.Services
             }
             catch (NpgsqlException ex)
             {
+                Debug.WriteLine(ex.Message);
                 return false;
             }
 
@@ -134,6 +136,7 @@ namespace CourseApp.Services
             }
             catch (NpgsqlException ex)
             {
+                Debug.WriteLine(ex.Message);
                 return false;
             }
 

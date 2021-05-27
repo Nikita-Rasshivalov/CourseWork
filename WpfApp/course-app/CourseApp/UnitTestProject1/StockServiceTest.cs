@@ -10,24 +10,35 @@ namespace CourseAppTests
     public class StockServiceTest
     {
         IService<Stock> service = new StockService();
-        Stock testStock = new Stock() { StockId = 1, StockName = "TestName", Markup = 10 };
+        Stock testStock = new Stock() { StockName = "TestName", Markup = 10,Description = "dasdas", UserId = 9 };
         [TestMethod]
         public void BInsertTest()
         {
             Assert.AreEqual(true, service.Insert(testStock));
         }
+
         [TestMethod]
-        public void BInsertTest2()
+        public void StockDel()
         {
-            Assert.AreEqual(true, service.Insert(testStock));
+            Assert.AreEqual(true, service.Delete(testStock));
         }
 
 
-
         [TestMethod]
-        public void BInsertTest3()
+        public void GetAllTest()
         {
-            Assert.AreEqual(true, service.Insert(testStock));
+            Assert.AreEqual(true, service.GetAll().Count > 0);
         }
+        [TestMethod]
+        public void CGetAllTest()
+        {
+            Assert.AreEqual(true, service.GetAll().Count > 0);
+        }
+        [TestMethod]
+        public void BGetAllTest()
+        {
+            Assert.AreEqual(true, service.GetAll().Count > 0);
+        }
+
     }
 }

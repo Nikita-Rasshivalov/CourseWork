@@ -77,6 +77,7 @@ namespace CourseApp
                 idExpenditureInvoices.Margin = new Thickness(-250, 0, 249.6, 0);
                 idReceiptInvoices.Margin = new Thickness(-250, 0, 250.4, 0);
                 Report.Margin = new Thickness(-356.8, 0, 352.6, 0);
+                tabControl.SelectedItem = idReceiptInvoices;
             }
             if (roleKey.Equals("stoker"))
             {
@@ -85,6 +86,7 @@ namespace CourseApp
                 idReceiptInvoices.Margin = new Thickness(-250, 0, 250.4, 0);
                 idExpenditureReceipt.Margin = new Thickness(-249.6, 0, 249.8, 0);
                 Report.Margin = new Thickness(-251.8, 0, 247.6, 0);
+                tabControl.SelectedItem = idReceiptInvoices;
             }
         }
 
